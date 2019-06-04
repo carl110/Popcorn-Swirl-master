@@ -13,91 +13,87 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MyCollectionViewCell" customModule="Popcorn_Swirl" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="662" height="286"/>
+            <rect key="frame" x="0.0" y="0.0" width="249" height="97"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="662" height="286"/>
+                <rect key="frame" x="0.0" y="0.0" width="249" height="97"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mle-zb-pi9">
-                        <rect key="frame" x="0.0" y="0.0" width="662" height="286"/>
+                        <rect key="frame" x="0.0" y="0.0" width="249" height="97"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="noFilmImage" translatesAutoresizingMaskIntoConstraints="NO" id="QJT-2d-ZGk">
-                                <rect key="frame" x="0.0" y="0.0" width="231.5" height="286"/>
+                                <rect key="frame" x="0.0" y="5" width="63.5" height="87"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="QJT-2d-ZGk" secondAttribute="height" multiplier="200:247" id="R6F-V9-Gl3"/>
+                                    <constraint firstAttribute="width" secondItem="QJT-2d-ZGk" secondAttribute="height" multiplier="71:97" id="4tw-Ek-hID"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Film Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4q-eS-yvb">
-                                <rect key="frame" x="231.5" y="5" width="322.5" height="26.5"/>
+                                <rect key="frame" x="63.5" y="5" width="142" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                 <color key="textColor" red="0.98039215690000003" green="0.96470588239999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year of release" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9z8-iJ-9cX">
-                                <rect key="frame" x="231.5" y="260.5" width="322.5" height="20.5"/>
+                                <rect key="frame" x="63.5" y="71.5" width="142" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.98039215690000003" green="0.96470588239999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAd-bm-XLG">
-                                <rect key="frame" x="231.5" y="133" width="322.5" height="20.5"/>
+                                <rect key="frame" x="63.5" y="38.5" width="142" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.98039215690000003" green="0.96470588239999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpe-wq-3V8">
-                                <rect key="frame" x="554" y="30" width="98" height="98"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpe-wq-3V8" customClass="WatchedButton" customModule="Popcorn_Swirl" customModuleProvider="target">
+                                <rect key="frame" x="205.5" y="10" width="33.5" height="33.5"/>
                                 <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Lpe-wq-3V8" secondAttribute="height" multiplier="1:1" id="2xY-QO-M33"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="OKc-Fh-u1z"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="qhd-YW-h4K"/>
+                                    <constraint firstAttribute="width" secondItem="Lpe-wq-3V8" secondAttribute="height" multiplier="1:1" id="ufJ-uZ-4ew"/>
                                 </constraints>
-                                <state key="normal" image="notWatched"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0L-0U-srq" customClass="FavouriteButton" customModule="Popcorn_Swirl" customModuleProvider="target">
-                                <rect key="frame" x="554" y="158" width="98" height="98"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0L-0U-srq" customClass="FavouriteButton" customModule="Popcorn_Swirl" customModuleProvider="target">
+                                <rect key="frame" x="205.5" y="53.5" width="33.5" height="33.5"/>
                                 <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="m0L-0U-srq" secondAttribute="height" multiplier="1:1" id="jpo-Ow-7hj"/>
+                                    <constraint firstAttribute="width" secondItem="m0L-0U-srq" secondAttribute="height" multiplier="1:1" id="g8h-Bf-BFV"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="9z8-iJ-9cX" secondAttribute="bottom" constant="5" id="04r-XI-bmk"/>
-                            <constraint firstAttribute="trailing" secondItem="Lpe-wq-3V8" secondAttribute="trailing" constant="10" id="7nN-R7-CKZ"/>
-                            <constraint firstAttribute="bottom" secondItem="QJT-2d-ZGk" secondAttribute="bottom" id="BNW-es-2zh"/>
-                            <constraint firstAttribute="bottom" secondItem="m0L-0U-srq" secondAttribute="bottom" constant="30" id="CBq-Hf-e7O"/>
-                            <constraint firstItem="m0L-0U-srq" firstAttribute="top" secondItem="Lpe-wq-3V8" secondAttribute="bottom" constant="30" id="D4N-d0-o01"/>
-                            <constraint firstItem="u4q-eS-yvb" firstAttribute="leading" secondItem="QJT-2d-ZGk" secondAttribute="trailing" id="PgW-cU-B7q"/>
-                            <constraint firstItem="PAd-bm-XLG" firstAttribute="centerY" secondItem="mle-zb-pi9" secondAttribute="centerY" id="UzN-cc-mAL"/>
-                            <constraint firstItem="Lpe-wq-3V8" firstAttribute="leading" secondItem="u4q-eS-yvb" secondAttribute="trailing" id="VLf-eL-x26"/>
-                            <constraint firstItem="m0L-0U-srq" firstAttribute="leading" secondItem="9z8-iJ-9cX" secondAttribute="trailing" id="a0Q-tt-Gla"/>
-                            <constraint firstItem="Lpe-wq-3V8" firstAttribute="top" secondItem="mle-zb-pi9" secondAttribute="top" constant="30" id="aG1-H2-1k4"/>
-                            <constraint firstItem="PAd-bm-XLG" firstAttribute="leading" secondItem="QJT-2d-ZGk" secondAttribute="trailing" id="cGm-9q-21d"/>
-                            <constraint firstItem="QJT-2d-ZGk" firstAttribute="leading" secondItem="mle-zb-pi9" secondAttribute="leading" id="f5p-B7-iI2"/>
-                            <constraint firstItem="Lpe-wq-3V8" firstAttribute="leading" secondItem="PAd-bm-XLG" secondAttribute="trailing" id="fAY-y9-uZb"/>
-                            <constraint firstItem="QJT-2d-ZGk" firstAttribute="top" secondItem="mle-zb-pi9" secondAttribute="top" id="lb7-vM-pGA"/>
-                            <constraint firstAttribute="trailing" secondItem="m0L-0U-srq" secondAttribute="trailing" constant="10" id="tSK-zZ-6AB"/>
-                            <constraint firstItem="9z8-iJ-9cX" firstAttribute="leading" secondItem="QJT-2d-ZGk" secondAttribute="trailing" id="tfS-pP-rf3"/>
-                            <constraint firstItem="m0L-0U-srq" firstAttribute="height" secondItem="Lpe-wq-3V8" secondAttribute="height" id="uLI-46-0qB"/>
-                            <constraint firstItem="u4q-eS-yvb" firstAttribute="top" secondItem="mle-zb-pi9" secondAttribute="top" constant="5" id="v4I-dE-Spl"/>
-                            <constraint firstItem="m0L-0U-srq" firstAttribute="width" secondItem="Lpe-wq-3V8" secondAttribute="width" id="z4N-L3-bim"/>
+                            <constraint firstItem="u4q-eS-yvb" firstAttribute="top" secondItem="mle-zb-pi9" secondAttribute="top" constant="5" id="4o8-Di-FCC"/>
+                            <constraint firstItem="Lpe-wq-3V8" firstAttribute="leading" secondItem="u4q-eS-yvb" secondAttribute="trailing" id="7xU-mw-8jn"/>
+                            <constraint firstItem="u4q-eS-yvb" firstAttribute="leading" secondItem="QJT-2d-ZGk" secondAttribute="trailing" id="99b-iO-LHK"/>
+                            <constraint firstItem="m0L-0U-srq" firstAttribute="height" secondItem="Lpe-wq-3V8" secondAttribute="height" id="Bcy-au-Jfe"/>
+                            <constraint firstItem="m0L-0U-srq" firstAttribute="top" secondItem="Lpe-wq-3V8" secondAttribute="bottom" constant="10" id="CtZ-Lk-bFq"/>
+                            <constraint firstItem="PAd-bm-XLG" firstAttribute="leading" secondItem="QJT-2d-ZGk" secondAttribute="trailing" id="Qnc-3G-gGy"/>
+                            <constraint firstItem="9z8-iJ-9cX" firstAttribute="leading" secondItem="QJT-2d-ZGk" secondAttribute="trailing" id="Rep-Ry-RK6"/>
+                            <constraint firstItem="PAd-bm-XLG" firstAttribute="width" secondItem="u4q-eS-yvb" secondAttribute="width" id="UFj-RH-lzp"/>
+                            <constraint firstItem="9z8-iJ-9cX" firstAttribute="width" secondItem="u4q-eS-yvb" secondAttribute="width" id="Wa5-4T-Br9"/>
+                            <constraint firstItem="QJT-2d-ZGk" firstAttribute="leading" secondItem="mle-zb-pi9" secondAttribute="leading" id="Zaf-Qf-7aN"/>
+                            <constraint firstAttribute="trailing" secondItem="Lpe-wq-3V8" secondAttribute="trailing" constant="10" id="bQi-sc-ZQC"/>
+                            <constraint firstItem="Lpe-wq-3V8" firstAttribute="top" secondItem="mle-zb-pi9" secondAttribute="top" constant="10" id="dFn-Gi-pYy"/>
+                            <constraint firstAttribute="trailing" secondItem="m0L-0U-srq" secondAttribute="trailing" constant="10" id="eEG-ar-WVC"/>
+                            <constraint firstItem="PAd-bm-XLG" firstAttribute="centerY" secondItem="mle-zb-pi9" secondAttribute="centerY" id="fJf-u7-qlF"/>
+                            <constraint firstAttribute="bottom" secondItem="9z8-iJ-9cX" secondAttribute="bottom" constant="5" id="j0W-de-fq3"/>
+                            <constraint firstAttribute="bottom" secondItem="m0L-0U-srq" secondAttribute="bottom" constant="10" id="m20-Q0-rv1"/>
+                            <constraint firstItem="m0L-0U-srq" firstAttribute="width" secondItem="Lpe-wq-3V8" secondAttribute="width" id="nXk-K6-poA"/>
+                            <constraint firstAttribute="bottom" secondItem="QJT-2d-ZGk" secondAttribute="bottom" constant="5" id="ufv-BT-neR"/>
+                            <constraint firstItem="QJT-2d-ZGk" firstAttribute="top" secondItem="mle-zb-pi9" secondAttribute="top" constant="5" id="zRO-9p-vEC"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="mle-zb-pi9" secondAttribute="trailing" id="86v-Yc-enM"/>
-                <constraint firstAttribute="bottom" secondItem="mle-zb-pi9" secondAttribute="bottom" id="MDP-ZK-rq6"/>
-                <constraint firstItem="mle-zb-pi9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lkb-6K-iGt"/>
-                <constraint firstItem="mle-zb-pi9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="t9c-2v-1bx"/>
+                <constraint firstItem="mle-zb-pi9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="W5q-yZ-8Sd"/>
+                <constraint firstItem="mle-zb-pi9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lrD-RK-c8Q"/>
+                <constraint firstAttribute="bottom" secondItem="mle-zb-pi9" secondAttribute="bottom" id="nzx-pi-ahq"/>
+                <constraint firstAttribute="trailing" secondItem="mle-zb-pi9" secondAttribute="trailing" id="yQd-xg-bGF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="662" height="286"/>
+            <size key="customSize" width="391" height="167"/>
             <connections>
                 <outlet property="artWorkImage" destination="QJT-2d-ZGk" id="KBh-hx-heG"/>
                 <outlet property="favouriteButton" destination="m0L-0U-srq" id="YeD-OF-f3D"/>
@@ -106,11 +102,10 @@
                 <outlet property="watchedButton" destination="Lpe-wq-3V8" id="jbt-yn-bhe"/>
                 <outlet property="yearOfRelease" destination="9z8-iJ-9cX" id="yRp-Ke-S1h"/>
             </connections>
-            <point key="canvasLocation" x="339.13043478260875" y="67.633928571428569"/>
+            <point key="canvasLocation" x="132.60869565217394" y="25.78125"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="noFilmImage" width="90" height="90"/>
-        <image name="notWatched" width="25" height="25"/>
     </resources>
 </document>

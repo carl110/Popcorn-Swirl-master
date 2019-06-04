@@ -25,7 +25,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         super.viewDidLoad()
         filmCollectionView.cellDelegate = self
         loadData()
-//        setUp()
+        setUp()
     }
     
     func setUp() {
@@ -54,7 +54,6 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
             }
         }
     }
-
 
     @IBAction func favouriteButton(_ sender: Any) {
     }
