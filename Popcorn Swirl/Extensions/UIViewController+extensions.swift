@@ -33,7 +33,7 @@ extension UIViewController {
     func amazonSearch(filmTitle : String) {
         let filmName = filmTitle
         let formattedString = filmName.replacingOccurrences(of: " ", with: "+")
-        guard let url = URL(string: "https://www.amazon.co.uk/s?k=\(formattedString)+film&ref=nd_sb_noss_1") else { return }
+        guard let url = URL(string: "https://www.amazon.co.uk/s?k=\(formattedString)&i=dvd&crid=1OT46CWJ8DIJT&sprefix=red+%2Cdvd%2C140&ref=nb_sb_ss_i_4_4") else { return }
         UIApplication.shared.open(url)
     }
 }

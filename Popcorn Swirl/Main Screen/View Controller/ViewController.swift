@@ -25,7 +25,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         super.viewDidLoad()
         filmCollectionView.cellDelegate = self
         loadData()
-        setUp()
+//        setUp()
     }
     
     func setUp() {
@@ -50,20 +50,11 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
 
                 }
             } else {
-                self.presentNoDataAlert(title: "Error 404", message: "Could not load data as not found")
+                self.alert(message: "Could not load data as not found")
             }
         }
     }
-    
-    func presentNoDataAlert(title: String?, message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert )
-        
-        let dismissAction = UIAlertAction(title: "Got It", style: .cancel, handler: { (action) -> Void in
-        })
-        
-        alertController.addAction(dismissAction)
-        present(alertController, animated: true)
-    }
+
 
     @IBAction func favouriteButton(_ sender: Any) {
     }

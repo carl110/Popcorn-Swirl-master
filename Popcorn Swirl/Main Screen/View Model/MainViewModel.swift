@@ -112,8 +112,7 @@ class MainViewModel {
                         let title = film["trackName"] as? String,
                         let catagory = film["primaryGenreName"] as? String,
                         let yearOfRelease = film["releaseDate"] as? String,
-                        let artworkURL = film["artworkUrl100"] as? String,
-                        let buyFilmURL = film["trackViewUrl"] as? String {
+                        let artworkURL = film["artworkUrl100"] as? String {
                         
                         let filmData = IndividualFilmModel(id: id, title: title, catagory: catagory, yearOfRelease: yearOfRelease, artworkURL: artworkURL)
                         filmData.plot = film["shortDescription"] as? String

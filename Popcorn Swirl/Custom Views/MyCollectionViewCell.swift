@@ -19,8 +19,10 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favouriteButton: UIButton!
     
     @IBOutlet weak var watchedButton: UIButton!
+
     
     var filmID: Int = 0
+    var filmModel: FilmModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,9 +31,9 @@ class MyCollectionViewCell: UICollectionViewCell {
 
     func populate(filmModel: FilmModel) {
         filmTitle.text = filmModel.title
-        yearOfRelease.text = String (filmModel.yearOfRelease)
+        filmTitle.text = filmModel.title
+        yearOfRelease.text = String (filmModel.yearOfRelease.prefix(4))
         genre.text = filmModel.catagory
-        filmID = filmModel.id
     }
     
     func setImage(image: UIImage) {
@@ -65,8 +67,5 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        
-        favouriteButton.isHidden = false
-
     }
 }

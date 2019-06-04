@@ -71,7 +71,7 @@ class DetailedScreenViewController: UIViewController {
         }
         
         filmTitle.text = filmMedia.title
-        filmYearOfRelease.text = filmMedia.yearOfRelease
+        filmYearOfRelease.text = String(filmMedia.yearOfRelease.prefix(10))
         filmGenre.text  = filmMedia.catagory
         filmPlot.text = filmMedia.plot
         
