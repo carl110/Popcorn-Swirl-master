@@ -8,14 +8,7 @@
 
 import Foundation
 import UIKit
-
-protocol FavouriteButtonDelegate {
-    func favouriteButtonWasSelected(state: Bool)
-}
-
-extension FavouriteButtonDelegate {
-    func favouriteButtonWasSelected(state: Bool) {}
-}
+import CoreData
 
 
 class FavouriteButton: UIButton {
@@ -23,11 +16,8 @@ class FavouriteButton: UIButton {
     let emptyHeart = UIImage(named: "emptyHeart")! as UIImage
     let redHeart = UIImage(named: "redHeart")! as UIImage
     
-    var favouriteButtonDelegate: FavouriteButtonDelegate? = nil
-    
     var isFavourite: Bool = false {
         didSet {
-            favouriteButtonDelegate?.favouriteButtonWasSelected(state: isFavourite)
             if isFavourite == true {
                 self.setImage(redHeart, for: .normal)
             } else {
@@ -45,8 +35,11 @@ class FavouriteButton: UIButton {
         if sender == self {
             if isFavourite == true {
                 isFavourite = false
+                print ("Now cell not favourite")
+//                CoreDataManager.shared.saveFilmID(filmID: <#T##Int32#>)
             } else {
                 isFavourite = true
+                print ("Cell now favourite")
             }
         }
     }

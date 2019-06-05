@@ -9,25 +9,13 @@
 import Foundation
 import UIKit
 
-protocol WatchedButtonDelegate {
-    func watchedButtonWasSelected(state: Bool)
-}
-
-extension WatchedButtonDelegate {
-    func watchedButtonWasSelected(state: Bool) {}
-}
-
-
 class WatchedButton: UIButton {
     
     let notWatched = UIImage(named: "notWatched")! as UIImage
     let watched = UIImage(named: "watched")! as UIImage
     
-    var watchedButtonDelegate: WatchedButtonDelegate? = nil
-    
     var isWatched: Bool = false {
         didSet {
-            watchedButtonDelegate?.watchedButtonWasSelected(state: isWatched)
             if isWatched == true {
                 self.setImage(watched, for: .normal)
             } else {
@@ -45,8 +33,10 @@ class WatchedButton: UIButton {
         if sender == self {
             if isWatched == true {
                 isWatched = false
+                print ("Cell is not watched")
             } else {
                 isWatched = true
+                print ("Cell is now watched")
             }
         }
     }

@@ -17,7 +17,7 @@ protocol FilmCellSelectedDelegate {
 class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var cellDelegate: FilmCellSelectedDelegate?
-    
+
     func registerCell() {
         self.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MyCollectionViewCell")
     }

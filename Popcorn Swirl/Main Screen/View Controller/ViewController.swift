@@ -24,7 +24,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         filmCollectionView.cellDelegate = self
-        loadData()
+        loadData(movieSearch: "2019")
         setUp()
     }
     
@@ -35,12 +35,11 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     
     //Delegate function
     func cellWasSelected(id: Int) {
-        print ("This is the id \(id)")
         mainFlowController.showDetailedScreen(with: id)
     }
     
-    func loadData() {
-        GetRequests.getFilmList(term: "red") { (success, list) in
+    func loadData(movieSearch: String) {
+        GetRequests.getFilmList(term: movieSearch) { (success, list) in
             
             if success, let list = list {
                 DataManager.shared.filmList = list

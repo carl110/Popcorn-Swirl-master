@@ -9,20 +9,17 @@
 import UIKit
 import CoreData
 
-
 class MyCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var artWorkImage: UIImageView!
     @IBOutlet weak var filmTitle: UILabel!
     @IBOutlet weak var yearOfRelease: UILabel!
     @IBOutlet weak var genre: UILabel!
-    @IBOutlet weak var favouriteButton: UIButton!
-    
-    @IBOutlet weak var watchedButton: UIButton!
+    @IBOutlet weak var favouriteButton: FavouriteButton!
+    @IBOutlet weak var watchedButton: WatchedButton!
 
-    
-    var filmID: Int = 0
     var filmModel: FilmModel!
+    var id: Int32?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,38 +31,21 @@ class MyCollectionViewCell: UICollectionViewCell {
         filmTitle.text = filmModel.title
         yearOfRelease.text = String (filmModel.yearOfRelease.prefix(4))
         genre.text = filmModel.catagory
+        id =  Int32(filmModel.id)
     }
     
     func setImage(image: UIImage) {
         artWorkImage.image = image
     }
     
-    @IBAction func watchedButton(_ sender: Any) {
-        if watchedButton.image(for: .normal) == UIImage(named: "notWatched") {
-           watchedButton.setImage(UIImage(named: "watched"), for: .normal)
-            watchedButton.backgroundColor = UIColor.Shades.standardBlack
-        } else {
-            watchedButton.setImage(UIImage(named: "notWatched"), for: .normal)
-            watchedButton.backgroundColor = UIColor.Shades.standardGrey
-        }
-    }
-    @IBAction func favouriteButton(_ sender: Any) {
-        if favouriteButton.image(for: .normal) == UIImage(named: "emptyHeart") {
-            favouriteButton.setImage(UIImage(named: "redHeart"), for: .normal)
-            favouriteButton.backgroundColor = UIColor.Shades.standardBlack
-            //svae the filmID
-            CoreDataManager.shared.saveFilmID(filmID: Int32(filmID))
-
-        } else {
-            favouriteButton.setImage(UIImage(named: "emptyHeart"), for: .normal)
-            favouriteButton.backgroundColor = UIColor.Shades.standardGrey
-        }
-    }
-    
-    func addToFavouriteArray(filmModel: FilmModel) {
-        print (filmModel.title)
-    }
     
     override func prepareForReuse() {
+    }
+    @IBAction func favouriteButton(_ sender: Any) {
+        if (favouriteButton.currentImage?.isEqual(UIImage(named: "emptyHeart")))! {
+            CoreDataManager.shared.saveFilmID(filmID: id!)
+        }
+    }
+    @IBAction func watchedButton(_ sender: Any) {
     }
 }
