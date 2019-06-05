@@ -44,8 +44,15 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBAction func favouriteButton(_ sender: Any) {
         if (favouriteButton.currentImage?.isEqual(UIImage(named: "emptyHeart")))! {
             CoreDataManager.shared.saveFilmID(filmID: id!)
+        } else {
+            CoreDataManager.shared.deleteFilmID(filmID: id!)
         }
     }
     @IBAction func watchedButton(_ sender: Any) {
+        if (watchedButton.currentImage?.isEqual(UIImage(named: "notWatched")))! {
+            CoreDataManager.shared.saveFilmID(filmID: id!)
+        } else {
+            CoreDataManager.shared.deleteFilmID(filmID: id!)
+        }
     }
 }

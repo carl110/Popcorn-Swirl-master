@@ -61,8 +61,57 @@ class CoreDataManager{
             print ("Could not fetch. \(error) \(error.userInfo)")
             return nil
         }
-}
+    }
+    
+    func deleteFilmID(filmID: Int32) {
+        let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
+        let managedContext = appDelegate!.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Popcorn_Swirl")
+        
+        let predicate = NSPredicate(format: "filmID = %i", filmID)
+        
+        fetchRequest.predicate = predicate
+        do{
+            let result = try managedContext.fetch(fetchRequest)
+            
+            print(result.count)
+            
+            if result.count > 0{
+                for object in result {
+                    print(object)
+                    managedContext.delete(object as! NSManagedObject)
+                }
+            }
+        }catch{
+            
+        }
+    }
     
     
+    func deleteAllSavedData() {
+        //Remove all data saved with coreData
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: "Popcorn_Swirl", in: context)
+        fetchRequest.includesPropertyValues = false
+        do {
+            let results = try context.fetch(fetchRequest) as! [NSManagedObject]
+            for result in results {
+                context.delete(result)
+            }
+            try context.save()
+            
+        } catch {
+            
+            print("fetch error -\(error.localizedDescription)")
+        }
+    }
 
 }
