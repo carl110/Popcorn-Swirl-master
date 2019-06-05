@@ -87,8 +87,9 @@ class CoreDataManager{
                     try managedContext.save()
                 }
             }
-        }catch{
-            
+        }catch {
+            let error = error as NSError
+            fatalError("Could not delete. \(error), \(error.userInfo)")
         }
     }
     
@@ -116,5 +117,53 @@ class CoreDataManager{
             print("fetch error -\(error.localizedDescription)")
         }
     }
+    
+    func fetchIndividualID(savedID: Int32) -> [Int]? {
+        let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
+        let managedContext = appDelegate!.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Popcorn_Swirl>(entityName: "Popcorn_Swirl")
+        
+        do {
+            let fetchedResults = try managedContext.fetch(fetchRequest)
+            
+            var newArray = [Int]()
+            for item in fetchedResults {
+                newArray.append(item.value(forKey: String(savedID)) as! Int)
+            }
+            return newArray
+        } catch let error as NSError {
+            print (error.description)
+        }
+        return nil
+    }
+    
+//    func updateFavouriteMarker(favourite: String, updatedEntry: Any, filmID: Int32) {
+//        //Update data held in coredata
+//        let appDelegate =
+//            UIApplication.shared.delegate as? AppDelegate
+//        let managedContext = appDelegate!.persistentContainer.viewContext
+//        
+//        let predicate = NSPredicate(value: filmID)
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Popcorn_Swirl")
+//        fetchRequest.predicate = predicate
+//        
+//        do {
+//            let tasks = try managedContext.fetch(fetchRequest)
+//            if let last = tasks.last {
+//                last.setValue(true, forKey: favourite)
+//                
+//                do {
+//                    try managedContext.save()
+//                } catch {
+//                    let error = error as NSError
+//                    fatalError("could not save. \(error), \(error.userInfo)")
+//                }
+//            }
+//        } catch let error as NSError {
+//            print ("Could not fetch \(error). \(error.userInfo))")
+//        }
+//    }
 
 }

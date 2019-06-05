@@ -28,9 +28,9 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
-        let filmModel = DataManager.shared.filmList[indexPath.item]
+        //reversed to show the newest films first
+        let filmModel = DataManager.shared.filmList.reversed()[indexPath.item]
         cell.populate(filmModel: filmModel)
-        
         if let artWorkData = filmModel.artworkData,
             let artwork = UIImage(data: artWorkData) {
             cell.setImage(image: artwork)
@@ -59,6 +59,7 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         delegate = self
         dataSource = self
         registerCell()
+
     }
     
     //set layout for cell

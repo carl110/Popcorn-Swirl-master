@@ -17,7 +17,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var genre: UILabel!
     @IBOutlet weak var favouriteButton: FavouriteButton!
     @IBOutlet weak var watchedButton: WatchedButton!
-
+    
     var filmModel: FilmModel!
     var id: Int32?
     
@@ -25,7 +25,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     func populate(filmModel: FilmModel) {
         filmTitle.text = filmModel.title
         filmTitle.text = filmModel.title
@@ -42,8 +42,15 @@ class MyCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
     }
     @IBAction func favouriteButton(_ sender: Any) {
+        //when selected and unselected - add/remove from core data
         if (favouriteButton.currentImage?.isEqual(UIImage(named: "emptyHeart")))! {
-            CoreDataManager.shared.saveFilmID(filmID: id!)
+            
+            let favouriteCount = CoreDataManager.shared.fetchIndividualID(savedID: id!)
+            if favouriteCount!.count > 0 {
+                
+            } else {
+                CoreDataManager.shared.saveFilmID(filmID: id!)
+            }
         } else {
             CoreDataManager.shared.deleteFilmID(filmID: id!)
         }
