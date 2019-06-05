@@ -83,6 +83,9 @@ class CoreDataManager{
                     print(object)
                     managedContext.delete(object as! NSManagedObject)
                 }
+                do {
+                    try managedContext.save()
+                }
             }
         }catch{
             
