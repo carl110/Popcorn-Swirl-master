@@ -50,6 +50,47 @@ class GetRequests {
         task.resume()
     }
     
+    static func getFilmListFromID(filmIDArray: [Int], completion: @escaping (Bool, [FilmModel]?) -> Void) {
+        
+        let session = URLSession(configuration: .default)
+        var list = [FilmModel]()
+        
+        for filmID in filmIDArray {
+        let request = RequestBuilder.createLookupRequest(id: filmID)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let data = data, error == nil {
+                
+                if let response = response as? HTTPURLResponse, response.statusCode == 200,
+                    let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                    let results = responseJSON["results"] as? [AnyObject] {
+                    
+                    
+
+                        if results.count > 0,
+                            let film = results[0] as? [String: Any],
+                         let id = film["trackId"] as? Int,
+                            let title = film["trackName"] as? String,
+                            let catagory = film["primaryGenreName"] as? String,
+                            let yearOfRelease = film["releaseDate"] as? String,
+                            let artworkURL = film["artworkUrl100"] as? String {
+                            let filmModel = FilmModel(id: id, title: title, catagory: catagory, yearOfRelease: yearOfRelease, artworkURL: artworkURL)
+                            
+                            list.append(filmModel)
+                        }
+                
+                    
+                    completion(true, list)
+                }
+                else {
+                    completion(false, nil)
+                }
+            } else {
+                completion(false, nil)
+            }
+        }
+        task.resume()
+        }}
+    
     static func getImage(imageUrl: URL, completion: @escaping (Bool, Data?) -> Void) {
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: imageUrl) { (data, response, error) in

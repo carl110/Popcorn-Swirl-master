@@ -24,6 +24,10 @@ class MyCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
+        if watchedButton.isWatched == true {
+            self.isHidden = true
+        }
     }
     
     func populate(filmModel: FilmModel) {

@@ -19,27 +19,6 @@ class CoreDataManager{
         return Singleton.instance
     }
     
-    //    func saveFilmID (filmID: Int32) {
-    //
-    //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-    //            return
-    //        }
-    //
-    //        let managedContext = appDelegate.persistentContainer.viewContext
-    //
-    //        let entity = NSEntityDescription.entity(forEntityName: "Popcorn_Swirl", in: managedContext)!
-    //        let managedObject = NSManagedObject(entity: entity, insertInto: managedContext)
-    //
-    //        managedObject.setValue(Int32(filmID), forKey: "filmID")
-    //
-    //        do {
-    //            try managedContext.save()
-    //        } catch {
-    //            let error = error as NSError
-    //            fatalError("Could not save. \(error), \(error.userInfo)")
-    //        }
-    //    }
-    
     func saveFilmID (filmID: Int32, object: String) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -81,6 +60,29 @@ class CoreDataManager{
             return idObjects
         } catch let error as NSError {
             print ("Could not fetch. \(error) \(error.userInfo)")
+            return nil
+        }
+    }
+    
+    func fetchIndividualButton(object: String) -> [FilmIDModel]? {
+        let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
+        let managedContext = appDelegate!.persistentContainer.viewContext
+        
+        let predicate = NSPredicate(format: "\(object) = true", true)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Popcorn_Swirl")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let films = try managedContext.fetch(fetchRequest)
+            var filmObjects: [FilmIDModel] = []
+            
+            films.forEach { (filmObject) in
+                filmObjects.append(FilmIDModel(object: filmObject))
+            }
+            return filmObjects
+        } catch let error as NSError {
+            print ("Could not fetch \(error) \(error.userInfo)")
             return nil
         }
     }

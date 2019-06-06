@@ -15,7 +15,7 @@ protocol FilmCellSelectedDelegate {
 }
 
 class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+
     var cellDelegate: FilmCellSelectedDelegate?
 
     func registerCell() {
@@ -46,7 +46,7 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         }
 
         //reversed to show the newest films first
-        let filmModel = DataManager.shared.filmList.reversed()[indexPath.item]
+        let filmModel = DataManager.shared.filmList[indexPath.item]
         cell.populate(filmModel: filmModel)
         if let artWorkData = filmModel.artworkData,
             let artwork = UIImage(data: artWorkData) {
@@ -75,7 +75,6 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         delegate = self
         dataSource = self
         registerCell()
-
     }
     
     //set layout for cell
