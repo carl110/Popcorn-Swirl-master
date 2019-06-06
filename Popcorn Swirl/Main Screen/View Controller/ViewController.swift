@@ -29,8 +29,8 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     }
     
     func setUp() {
-        favouriteButton.setImage(UIImage(named: "redHeart"), for: .normal)
-        watchedButton.setImage(UIImage(named: "watched"), for: .normal)
+        favouriteButton.setImage(UIImage(named: Images.redHeart.name()), for: .normal)
+        watchedButton.setImage(UIImage(named: Images.redHeart.name()), for: .normal)
     }
     
     //Delegate function

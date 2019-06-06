@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         navigationBar.barTintColor = UIColor.Yellows.mustardYellow
         
+        //delete all saved data when loading
+        CoreDataManager.shared.deleteAllSavedData()
+        
         return true
     }
 

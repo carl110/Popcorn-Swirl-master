@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8930706822A9412700819C69 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8930706722A9412700819C69 /* Enums.swift */; };
 		894656CD229810A00073C67D /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894656CB229810A00073C67D /* MyCollectionViewCell.swift */; };
 		894656CE229810A00073C67D /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894656CC229810A00073C67D /* MyCollectionViewCell.xib */; };
 		894656D0229818EB0073C67D /* FilmCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894656CF229818EB0073C67D /* FilmCollectionView.swift */; };
@@ -15,7 +16,7 @@
 		8978329A229BFCDB003F5002 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89783299229BFCDB003F5002 /* DataManager.swift */; };
 		89905FC3229E95CF00D94CC7 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89905FC2229E95CF00D94CC7 /* FavouriteButton.swift */; };
 		899B6D5722A15D8900BBBCF6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D5622A15D8900BBBCF6 /* CoreDataManager.swift */; };
-		899B6D5922A15E9100BBBCF6 /* FavouriteFilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D5822A15E9100BBBCF6 /* FavouriteFilmModel.swift */; };
+		899B6D5922A15E9100BBBCF6 /* FilmIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D5822A15E9100BBBCF6 /* FilmIDModel.swift */; };
 		899B6D5B22A1670900BBBCF6 /* WatchedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D5A22A1670900BBBCF6 /* WatchedData.swift */; };
 		89A7334B22A53E2800F4BF56 /* UIButton+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7334A22A53E2700F4BF56 /* UIButton+extensions.swift */; };
 		89A7334D22A53EC400F4BF56 /* UIView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A7334C22A53EC400F4BF56 /* UIView+extensions.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8930706722A9412700819C69 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		894656CB229810A00073C67D /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		894656CC229810A00073C67D /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		894656CF229818EB0073C67D /* FilmCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionView.swift; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		89783299229BFCDB003F5002 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		89905FC2229E95CF00D94CC7 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		899B6D5622A15D8900BBBCF6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		899B6D5822A15E9100BBBCF6 /* FavouriteFilmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteFilmModel.swift; sourceTree = "<group>"; };
+		899B6D5822A15E9100BBBCF6 /* FilmIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmIDModel.swift; sourceTree = "<group>"; };
 		899B6D5A22A1670900BBBCF6 /* WatchedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedData.swift; sourceTree = "<group>"; };
 		89A7334A22A53E2700F4BF56 /* UIButton+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extensions.swift"; sourceTree = "<group>"; };
 		89A7334C22A53EC400F4BF56 /* UIView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extensions.swift"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				894656D222981B3B0073C67D /* FilmModel.swift */,
 				89CDA22422A13D29004576E2 /* FavouriteModel.swift */,
+				8930706722A9412700819C69 /* Enums.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,7 +152,7 @@
 			children = (
 				89BA7DBD229565E000DF328D /* Popcorn_Swirl.xcdatamodeld */,
 				899B6D5622A15D8900BBBCF6 /* CoreDataManager.swift */,
-				899B6D5822A15E9100BBBCF6 /* FavouriteFilmModel.swift */,
+				899B6D5822A15E9100BBBCF6 /* FilmIDModel.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -438,7 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				899B6D5922A15E9100BBBCF6 /* FavouriteFilmModel.swift in Sources */,
+				899B6D5922A15E9100BBBCF6 /* FilmIDModel.swift in Sources */,
 				89CDA217229EB31C004576E2 /* IndividualFilmModel.swift in Sources */,
 				899B6D5B22A1670900BBBCF6 /* WatchedData.swift in Sources */,
 				89CDA21D229FE693004576E2 /* Services.swift in Sources */,
@@ -454,6 +457,7 @@
 				89CDA214229EA782004576E2 /* UIColor+extensions.swift in Sources */,
 				89A7334D22A53EC400F4BF56 /* UIView+extensions.swift in Sources */,
 				89BA7DE822969A7800DF328D /* DetailedScreenFlowController.swift in Sources */,
+				8930706822A9412700819C69 /* Enums.swift in Sources */,
 				89CDA221229FE7B5004576E2 /* GetRequests.swift in Sources */,
 				89A7334F22A6844C00F4BF56 /* WatchedButton.swift in Sources */,
 				89BA7DF22296A91500DF328D /* data+extensions.swift in Sources */,

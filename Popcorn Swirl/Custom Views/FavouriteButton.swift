@@ -13,8 +13,8 @@ import CoreData
 
 class FavouriteButton: UIButton {
     
-    let emptyHeart = UIImage(named: "emptyHeart")! as UIImage
-    let redHeart = UIImage(named: "redHeart")! as UIImage
+    let emptyHeart = UIImage(named: Images.emptyHeart.name())! as UIImage
+    let redHeart = UIImage(named: Images.redHeart.name())! as UIImage
     
     var isFavourite: Bool = false {
         didSet {
@@ -35,11 +35,10 @@ class FavouriteButton: UIButton {
         if sender == self {
             if isFavourite == true {
                 isFavourite = false
-                print ("Now cell not favourite")
+                
 //                CoreDataManager.shared.saveFilmID(filmID: <#T##Int32#>)
             } else {
                 isFavourite = true
-                print ("Cell now favourite")
             }
         }
     }

@@ -19,7 +19,28 @@ class CoreDataManager{
         return Singleton.instance
     }
     
-    func saveFilmID (filmID: Int32) {
+    //    func saveFilmID (filmID: Int32) {
+    //
+    //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+    //            return
+    //        }
+    //
+    //        let managedContext = appDelegate.persistentContainer.viewContext
+    //
+    //        let entity = NSEntityDescription.entity(forEntityName: "Popcorn_Swirl", in: managedContext)!
+    //        let managedObject = NSManagedObject(entity: entity, insertInto: managedContext)
+    //
+    //        managedObject.setValue(Int32(filmID), forKey: "filmID")
+    //
+    //        do {
+    //            try managedContext.save()
+    //        } catch {
+    //            let error = error as NSError
+    //            fatalError("Could not save. \(error), \(error.userInfo)")
+    //        }
+    //    }
+    
+    func saveFilmID (filmID: Int32, object: String) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -31,6 +52,7 @@ class CoreDataManager{
         let managedObject = NSManagedObject(entity: entity, insertInto: managedContext)
         
         managedObject.setValue(Int32(filmID), forKey: "filmID")
+        managedObject.setValue(true, forKey: object)
         
         do {
             try managedContext.save()
@@ -40,25 +62,49 @@ class CoreDataManager{
         }
     }
     
-    func fetchFilmIDs() -> [FavouriteFilmModel]? {
+    func fetchFilmIDs() -> [FilmIDModel]? {
         
         let appDelegate =
             UIApplication.shared.delegate as? AppDelegate
         let managedContext = appDelegate!.persistentContainer.viewContext
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PopCorn_Swirl")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Popcorn_Swirl")
         
         do {
             let filmIDs = try managedContext.fetch(fetchRequest)
-            var idObjects: [FavouriteFilmModel] = []
+            var idObjects: [FilmIDModel] = []
             
             filmIDs.forEach { (idObject) in
-                idObjects.append(FavouriteFilmModel(object: idObject))
+                idObjects.append(FilmIDModel(object: idObject))
             }
             
             return idObjects
         } catch let error as NSError {
             print ("Could not fetch. \(error) \(error.userInfo)")
+            return nil
+        }
+    }
+    
+ 
+    func fetchIndividualID(filmID: Int32) -> [FilmIDModel]? {
+        let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
+        let managedContext = appDelegate!.persistentContainer.viewContext
+        
+        let predicate = NSPredicate(format: "filmID = %i", filmID)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Popcorn_Swirl")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let films = try managedContext.fetch(fetchRequest)
+            var filmObjects: [FilmIDModel] = []
+            
+            films.forEach { (filmObject) in
+                filmObjects.append(FilmIDModel(object: filmObject))
+            }
+            return filmObjects
+        } catch let error as NSError {
+            print ("Could not fetch \(error) \(error.userInfo)")
             return nil
         }
     }
@@ -76,11 +122,8 @@ class CoreDataManager{
         do{
             let result = try managedContext.fetch(fetchRequest)
             
-            print(result.count)
-            
             if result.count > 0{
                 for object in result {
-                    print(object)
                     managedContext.delete(object as! NSManagedObject)
                 }
                 do {
@@ -118,52 +161,31 @@ class CoreDataManager{
         }
     }
     
-    func fetchIndividualID(savedID: Int32) -> [Int]? {
+    func updateButtonBool(object: String, updatedEntry: Bool, filmID: Int32) {
+        //Update data held in coredata
         let appDelegate =
             UIApplication.shared.delegate as? AppDelegate
         let managedContext = appDelegate!.persistentContainer.viewContext
         
-        let fetchRequest = NSFetchRequest<Popcorn_Swirl>(entityName: "Popcorn_Swirl")
+        let predicate = NSPredicate(format: "filmID == %i", filmID)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Popcorn_Swirl")
+        fetchRequest.predicate = predicate
         
         do {
-            let fetchedResults = try managedContext.fetch(fetchRequest)
-            
-            var newArray = [Int]()
-            for item in fetchedResults {
-                newArray.append(item.value(forKey: String(savedID)) as! Int)
+            let tasks = try managedContext.fetch(fetchRequest)
+            if let last = tasks.last {
+                last.setValue(updatedEntry, forKey: object)
+                
+                do {
+                    try managedContext.save()
+                } catch {
+                    let error = error as NSError
+                    fatalError("could not save. \(error), \(error.userInfo)")
+                }
             }
-            return newArray
         } catch let error as NSError {
-            print (error.description)
+            print ("Could not fetch \(error). \(error.userInfo))")
         }
-        return nil
     }
     
-//    func updateFavouriteMarker(favourite: String, updatedEntry: Any, filmID: Int32) {
-//        //Update data held in coredata
-//        let appDelegate =
-//            UIApplication.shared.delegate as? AppDelegate
-//        let managedContext = appDelegate!.persistentContainer.viewContext
-//        
-//        let predicate = NSPredicate(value: filmID)
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Popcorn_Swirl")
-//        fetchRequest.predicate = predicate
-//        
-//        do {
-//            let tasks = try managedContext.fetch(fetchRequest)
-//            if let last = tasks.last {
-//                last.setValue(true, forKey: favourite)
-//                
-//                do {
-//                    try managedContext.save()
-//                } catch {
-//                    let error = error as NSError
-//                    fatalError("could not save. \(error), \(error.userInfo)")
-//                }
-//            }
-//        } catch let error as NSError {
-//            print ("Could not fetch \(error). \(error.userInfo))")
-//        }
-//    }
-
 }

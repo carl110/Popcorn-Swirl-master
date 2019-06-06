@@ -37,3 +37,4 @@ extension UIViewController {
         UIApplication.shared.open(url)
     }
 }
+

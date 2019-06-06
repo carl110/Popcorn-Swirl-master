@@ -50,7 +50,6 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let filmModel = DataManager.shared.filmList[indexPath.item]
         let id = filmModel.id
-        print ("Cell selected")
         cellDelegate?.cellWasSelected(id: id)
         
     }

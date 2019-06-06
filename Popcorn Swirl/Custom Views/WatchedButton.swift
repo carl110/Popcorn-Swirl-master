@@ -11,8 +11,8 @@ import UIKit
 
 class WatchedButton: UIButton {
     
-    let notWatched = UIImage(named: "notWatched")! as UIImage
-    let watched = UIImage(named: "watched")! as UIImage
+    let notWatched = UIImage(named: Images.notWatched.name())! as UIImage
+    let watched = UIImage(named: Images.watched.name())! as UIImage
     
     var isWatched: Bool = false {
         didSet {
@@ -33,10 +33,8 @@ class WatchedButton: UIButton {
         if sender == self {
             if isWatched == true {
                 isWatched = false
-                print ("Cell is not watched")
             } else {
                 isWatched = true
-                print ("Cell is now watched")
             }
         }
     }

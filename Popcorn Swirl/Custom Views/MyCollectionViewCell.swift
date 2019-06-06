@@ -37,29 +37,59 @@ class MyCollectionViewCell: UICollectionViewCell {
     func setImage(image: UIImage) {
         artWorkImage.image = image
     }
-    
-    
+
     override func prepareForReuse() {
     }
-    @IBAction func favouriteButton(_ sender: Any) {
-        //when selected and unselected - add/remove from core data
-        if (favouriteButton.currentImage?.isEqual(UIImage(named: "emptyHeart")))! {
-            
-            let favouriteCount = CoreDataManager.shared.fetchIndividualID(savedID: id!)
-            if favouriteCount!.count > 0 {
-                
+    
+    func buttonSelected(object: String, filmID: Int32!, pictureName: String, button: UIButton, unselectButtonFunc: Any) {
+        
+        let favouriteIDList = CoreDataManager.shared.fetchIndividualID(filmID: filmID)
+        //if button image is unselected image
+        if (button.currentImage?.isEqual(UIImage(named: pictureName)))! {
+            //filmIOD stored
+            if favouriteIDList!.count > 0 {
+                //updated just the button marker
+                CoreDataManager.shared.updateButtonBool(object: object, updatedEntry: true, filmID: filmID)
             } else {
-                CoreDataManager.shared.saveFilmID(filmID: id!)
+                //if not add filmID Object to popcorn swirl entity
+                CoreDataManager.shared.saveFilmID(filmID: filmID, object: object)
             }
         } else {
-            CoreDataManager.shared.deleteFilmID(filmID: id!)
+            //function for unselecting button
+            unselectButtonFunc
         }
     }
-    @IBAction func watchedButton(_ sender: Any) {
-        if (watchedButton.currentImage?.isEqual(UIImage(named: "notWatched")))! {
-            CoreDataManager.shared.saveFilmID(filmID: id!)
-        } else {
-            CoreDataManager.shared.deleteFilmID(filmID: id!)
+    
+    func favouriteButtonUnselected(filmID: Int32!) {
+        let favouriteIDList = CoreDataManager.shared.fetchIndividualID(filmID: filmID)
+        //if watched data is true
+        for data in favouriteIDList! {
+            if data.watched == true {
+                //set favourite to false
+                CoreDataManager.shared.updateButtonBool(object: ButtonCase.favourite.name(), updatedEntry: false, filmID: filmID)
+            } else {
+                CoreDataManager.shared.deleteFilmID(filmID: filmID)
+            }
         }
+    }
+    
+    func watchedButtonUnselected(filmID: Int32!) {
+        let favouriteIDList = CoreDataManager.shared.fetchIndividualID(filmID: filmID)
+        //if favourite data is true
+        for data in favouriteIDList! {
+            if data.favourite == true {
+                //set watched to false
+                CoreDataManager.shared.updateButtonBool(object: ButtonCase.watched.name(), updatedEntry: false, filmID: filmID)
+            } else {
+                CoreDataManager.shared.deleteFilmID(filmID: filmID)
+            }
+        }
+    }
+    
+    @IBAction func favouriteButton(_ sender: Any) {
+        buttonSelected(object: ButtonCase.favourite.name(), filmID: id!, pictureName: Images.emptyHeart.name(), button: favouriteButton, unselectButtonFunc: favouriteButtonUnselected(filmID: id!))
+    }
+    @IBAction func watchedButton(_ sender: Any) {
+        buttonSelected(object: ButtonCase.watched.name(), filmID: id!, pictureName: Images.notWatched.name(), button: watchedButton, unselectButtonFunc: watchedButtonUnselected(filmID: id!))
     }
 }
