@@ -28,6 +28,23 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
+        
+        DispatchQueue.main.async {
+            //Load list of films in coredata
+            let filmList = CoreDataManager.shared.fetchFilmIDs()
+            //if favourite or watched are true in core data update cell buttons
+            for film in filmList! {
+                if cell.id == film.filmID {
+                    if film.favourite == true {
+                        cell.favouriteButton.isFavourite = true
+                    }
+                    if film.watched == true {
+                        cell.watchedButton.isWatched = true
+                    }
+                }
+            }
+        }
+
         //reversed to show the newest films first
         let filmModel = DataManager.shared.filmList.reversed()[indexPath.item]
         cell.populate(filmModel: filmModel)

@@ -39,6 +39,8 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
 
     override func prepareForReuse() {
+        favouriteButton.isFavourite = false
+        watchedButton.isWatched = false
     }
     
     func buttonSelected(object: String, filmID: Int32!, pictureName: String, button: UIButton, unselectButtonFunc: Any) {
