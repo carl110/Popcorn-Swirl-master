@@ -36,5 +36,15 @@ extension UIViewController {
         guard let url = URL(string: "https://www.amazon.co.uk/s?k=\(formattedString)&i=dvd&crid=1OT46CWJ8DIJT&sprefix=red+%2Cdvd%2C140&ref=nb_sb_ss_i_4_4") else { return }
         UIApplication.shared.open(url)
     }
+    
+    //Create array to do multi lookup
+    func createIDArray(object: String) -> [Int] {
+        let buttonFilmIDs = CoreDataManager.shared.fetchIndividualButton(object: object)
+        var buttonFilmIDArray: [Int] = []
+        for details in buttonFilmIDs! {
+            buttonFilmIDArray.append(Int(details.filmID))
+        }
+        return buttonFilmIDArray
+    }
 }
 

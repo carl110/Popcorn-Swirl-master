@@ -54,7 +54,6 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpe-wq-3V8" customClass="WatchedButton" customModule="Popcorn_Swirl" customModuleProvider="target">
                                 <rect key="frame" x="205.5" y="10" width="33.5" height="33.5"/>
-                                <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Lpe-wq-3V8" secondAttribute="height" multiplier="1:1" id="ufJ-uZ-4ew"/>
                                 </constraints>
@@ -64,7 +63,6 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0L-0U-srq" customClass="FavouriteButton" customModule="Popcorn_Swirl" customModuleProvider="target">
                                 <rect key="frame" x="205.5" y="53.5" width="33.5" height="33.5"/>
-                                <color key="backgroundColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="m0L-0U-srq" secondAttribute="height" multiplier="1:1" id="g8h-Bf-BFV"/>
                                 </constraints>
