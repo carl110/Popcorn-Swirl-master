@@ -17,6 +17,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     private let filmSearch = "2019"
     private let watchedURL = "https://img.icons8.com/office/50/000000/accuracy.png"
     private let favouritetURL = "https://img.icons8.com/color/50/000000/hearts.png"
+    private let myTitle = "Film List"
     
     @IBOutlet weak var filmCollectionView: FilmCollectionView!
     @IBOutlet weak var favouriteButton: UIButton!
@@ -37,6 +38,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     func setUp() {
         favouriteButton.setImage(UIImage(named: Images.redHeart.name()), for: .normal)
         watchedButton.setImage(UIImage(named: Images.watched.name()), for: .normal)
+        self.title = myTitle
     }
     
     //Delegate function
@@ -82,9 +84,13 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
             
             //combine IDs from favourites and watched and show only those that are both
             filmArrayIsEmpty(object: ButtonCase, buttonName: ButtonCase, idArray: Array(Set(createIDArray(object: ButtonCase)).intersection((createIDArray(object: otherButtonCase)))), pictureURL: pictureURL)
+            
+            self.title = "Watched and Favourites List"
 
         } else {
             filmArrayIsEmpty(object: ButtonCase, buttonName: ButtonCase, idArray: createIDArray(object: ButtonCase), pictureURL: pictureURL)
+            
+            self.title = "\(ButtonCase) List"
         }
     }
     
@@ -97,9 +103,13 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
             print ("unselect and other butoon selected")
             //show all other button items
             filmArrayIsEmpty(object: otherButtonCase, buttonName: otherButtonCase, idArray: createIDArray(object: otherButtonCase), pictureURL: pictureURL)
+            
+            self.title = "\(otherButtonCase) List"
         } else {
             //show full list
             loadData(movieSearch: filmSearch)
+            
+            self.title = myTitle
         }
     }
     

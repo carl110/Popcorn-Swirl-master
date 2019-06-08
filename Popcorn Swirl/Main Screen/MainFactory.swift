@@ -17,7 +17,7 @@ class MainFactory {
         navigationController.isNavigationBarHidden = false
         navigationController.navigationBar.backgroundColor = UIColor.Shades.standardBlack
         navigationController.navigationBar.tintColor = UIColor.Shades.standardBlack
-        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.Shades.standardWhite]
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.Shades.standardBlack]
         
         let mainController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ViewController
         let mainFlowController = MainFlowController(navigationController: navigationController)

@@ -27,9 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationBar = UINavigationBar.appearance()
         
         navigationBar.barTintColor = UIColor.Yellows.mustardYellow
-        
-        //delete all saved data when loading
-//        CoreDataManager.shared.deleteAllSavedData()
+        navigationBar.isTranslucent = false
         
         return true
     }

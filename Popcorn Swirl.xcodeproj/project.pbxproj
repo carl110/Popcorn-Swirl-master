@@ -12,6 +12,7 @@
 		894656CE229810A00073C67D /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 894656CC229810A00073C67D /* MyCollectionViewCell.xib */; };
 		894656D0229818EB0073C67D /* FilmCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894656CF229818EB0073C67D /* FilmCollectionView.swift */; };
 		894656D322981B3B0073C67D /* FilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894656D222981B3B0073C67D /* FilmModel.swift */; };
+		896B787822ABD5A000C5DC6C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896B787722ABD59F00C5DC6C /* LoadingView.swift */; };
 		8978329A229BFCDB003F5002 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89783299229BFCDB003F5002 /* DataManager.swift */; };
 		89905FC3229E95CF00D94CC7 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89905FC2229E95CF00D94CC7 /* FavouriteButton.swift */; };
 		899B6D5722A15D8900BBBCF6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D5622A15D8900BBBCF6 /* CoreDataManager.swift */; };
@@ -59,6 +60,7 @@
 		894656CC229810A00073C67D /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		894656CF229818EB0073C67D /* FilmCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionView.swift; sourceTree = "<group>"; };
 		894656D222981B3B0073C67D /* FilmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmModel.swift; sourceTree = "<group>"; };
+		896B787722ABD59F00C5DC6C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		89783299229BFCDB003F5002 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		89905FC2229E95CF00D94CC7 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		899B6D5622A15D8900BBBCF6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				894656CF229818EB0073C67D /* FilmCollectionView.swift */,
 				89905FC2229E95CF00D94CC7 /* FavouriteButton.swift */,
 				89A7334E22A6844C00F4BF56 /* WatchedButton.swift */,
+				896B787722ABD59F00C5DC6C /* LoadingView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				89BA7DB9229565E000DF328D /* ViewController.swift in Sources */,
 				89CDA21F229FE77B004576E2 /* RequestBuilder.swift in Sources */,
 				89BA7DEF22969FFB00DF328D /* DetailedScreenViewModel.swift in Sources */,
+				896B787822ABD5A000C5DC6C /* LoadingView.swift in Sources */,
 				89BA7DE0229567C500DF328D /* MainFactory.swift in Sources */,
 				89BA7DE622969A6600DF328D /* DetailedScreenFactory.swift in Sources */,
 				89BA7DB7229565E000DF328D /* AppDelegate.swift in Sources */,
