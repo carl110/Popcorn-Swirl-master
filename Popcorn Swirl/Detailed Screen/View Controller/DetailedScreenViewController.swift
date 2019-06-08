@@ -33,6 +33,7 @@ class DetailedScreenViewController: UIViewController {
         super .viewDidLoad()
         setUp()
         loadIndividualFilmData()
+        self.title = "Detailed View"
     }
     
     func setUp() {

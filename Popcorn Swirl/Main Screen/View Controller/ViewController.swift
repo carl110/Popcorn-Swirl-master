@@ -74,23 +74,35 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         }
     }
     
-    func selectButton(button: UIButton, buttonIamgeSelectedSate: String, otherButton: UIButton, otherButtonSelectedSate: String, ButtonCase: String, otherButtonCase: String, pictureURL: String) {
+    func selectButton(button: UIButton, buttonIamgeSelectedSate: String, otherButton: UIButton, otherButtonSelectedSate: String, buttonCase: String, otherButtonCase: String, pictureURL: String) {
         //Set Button image and title
         button.setImage(UIImage(named: buttonIamgeSelectedSate), for: .normal)
         button.setTitle("View All", for: .normal)
         
         //if other button already selected
         if(otherButton.currentImage?.isEqual(UIImage(named: otherButtonSelectedSate)))! {
+            print ("selecte and other button selected")
             
             //combine IDs from favourites and watched and show only those that are both
-            filmArrayIsEmpty(object: ButtonCase, buttonName: ButtonCase, idArray: Array(Set(createIDArray(object: ButtonCase)).intersection((createIDArray(object: otherButtonCase)))), pictureURL: pictureURL)
-            
+            let joinedArray = Array(Set(createIDArray(object: buttonCase)).intersection(createIDArray(object: otherButtonCase)))
+            //if no films both watched and favourite
+            if joinedArray.isEmpty {
+                DataManager.shared.filmList = [FilmModel(
+                    id: 0,
+                    title: "List Empty",
+                    catagory: "There are currently no films in this list",
+                    yearOfRelease: "",
+                    artworkURL: pictureURL)]
+                filmCollectionView.reloadData()
+            } else {
+                //Show filtered list
+                loadDataFromID(filmID: Array(Set(createIDArray(object: buttonCase)).intersection((createIDArray(object: otherButtonCase)))))
+            }
             self.title = "Watched and Favourites List"
-
         } else {
-            filmArrayIsEmpty(object: ButtonCase, buttonName: ButtonCase, idArray: createIDArray(object: ButtonCase), pictureURL: pictureURL)
+            filmArrayIsEmpty(object: buttonCase, idArray: createIDArray(object: buttonCase), pictureURL: pictureURL)
             
-            self.title = "\(ButtonCase) List"
+            self.title = "\(buttonCase) List"
         }
     }
     
@@ -102,7 +114,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         if(otherButton.currentImage?.isEqual(UIImage(named: otherButtonSelectedSate)))! {
             print ("unselect and other butoon selected")
             //show all other button items
-            filmArrayIsEmpty(object: otherButtonCase, buttonName: otherButtonCase, idArray: createIDArray(object: otherButtonCase), pictureURL: pictureURL)
+            filmArrayIsEmpty(object: otherButtonCase, idArray: createIDArray(object: otherButtonCase), pictureURL: pictureURL)
             
             self.title = "\(otherButtonCase) List"
         } else {
@@ -113,14 +125,14 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         }
     }
     
-    func filmArrayIsEmpty(object: String, buttonName: String, idArray: [Int], pictureURL: String) {
+    func filmArrayIsEmpty(object: String, idArray: [Int], pictureURL: String) {
 
         //if button array is empty
         if createIDArray(object: object).isEmpty {
             DataManager.shared.filmList = [FilmModel(
                 id: 0,
-                title: "There are currently no \(buttonName) items in your list",
-                catagory: "To add items to your \(buttonName) list just press the ",
+                title: "List Empty",
+                catagory: "There are currently no films in this list",
                 yearOfRelease: "",
                 artworkURL: pictureURL)]
             
@@ -137,7 +149,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
                          buttonIamgeSelectedSate: Images.emptyHeart.name(),
                          otherButton: watchedButton,
                          otherButtonSelectedSate: Images.notWatched.name(),
-                         ButtonCase: ButtonCase.favourite.name(),
+                         buttonCase: ButtonCase.favourite.name(),
                          otherButtonCase: ButtonCase.watched.name(),
                          pictureURL: favouritetURL)
         } else {
@@ -159,7 +171,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
                          buttonIamgeSelectedSate: Images.notWatched.name(),
                          otherButton: favouriteButton,
                          otherButtonSelectedSate: Images.emptyHeart.name(),
-                         ButtonCase: ButtonCase.watched.name(),
+                         buttonCase: ButtonCase.watched.name(),
                          otherButtonCase: ButtonCase.favourite.name(),
                          pictureURL: watchedURL)
         } else {
