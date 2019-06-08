@@ -36,7 +36,7 @@
 		89BA7DEA22969AAF00DF328D /* DetailedScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA7DE922969AAF00DF328D /* DetailedScreenViewController.swift */; };
 		89BA7DEC22969BB100DF328D /* DetailedScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BA7DEB22969BB100DF328D /* DetailedScreen.storyboard */; };
 		89BA7DEF22969FFB00DF328D /* DetailedScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA7DEE22969FFB00DF328D /* DetailedScreenViewModel.swift */; };
-		89BA7DF22296A91500DF328D /* data+extensions.temp_caseinsensitive_rename.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA7DF12296A91500DF328D /* data+extensions.temp_caseinsensitive_rename.swift */; };
+		89BA7DF22296A91500DF328D /* Data+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA7DF12296A91500DF328D /* Data+extensions.swift */; };
 		89CDA214229EA782004576E2 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA213229EA782004576E2 /* UIColor+extensions.swift */; };
 		89CDA217229EB31C004576E2 /* IndividualFilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA216229EB31C004576E2 /* IndividualFilmModel.swift */; };
 		89CDA21D229FE693004576E2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA21C229FE693004576E2 /* Services.swift */; };
@@ -90,7 +90,7 @@
 		89BA7DE922969AAF00DF328D /* DetailedScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedScreenViewController.swift; sourceTree = "<group>"; };
 		89BA7DEB22969BB100DF328D /* DetailedScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedScreen.storyboard; sourceTree = "<group>"; };
 		89BA7DEE22969FFB00DF328D /* DetailedScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedScreenViewModel.swift; sourceTree = "<group>"; };
-		89BA7DF12296A91500DF328D /* data+extensions.temp_caseinsensitive_rename.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "data+extensions.temp_caseinsensitive_rename.swift"; sourceTree = "<group>"; };
+		89BA7DF12296A91500DF328D /* Data+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+extensions.swift"; sourceTree = "<group>"; };
 		89CDA213229EA782004576E2 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 		89CDA216229EB31C004576E2 /* IndividualFilmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualFilmModel.swift; sourceTree = "<group>"; };
 		89CDA21C229FE693004576E2 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 		89BA7DF02296A8F100DF328D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				89BA7DF12296A91500DF328D /* data+extensions.temp_caseinsensitive_rename.swift */,
+				89BA7DF12296A91500DF328D /* Data+extensions.swift */,
 				89CDA213229EA782004576E2 /* UIColor+extensions.swift */,
 				89CDA22222A018EE004576E2 /* UIViewController+extensions.swift */,
 				89A7334A22A53E2700F4BF56 /* UIButton+extensions.swift */,
@@ -463,7 +463,7 @@
 				8930706822A9412700819C69 /* Enums.swift in Sources */,
 				89CDA221229FE7B5004576E2 /* GetRequests.swift in Sources */,
 				89A7334F22A6844C00F4BF56 /* WatchedButton.swift in Sources */,
-				89BA7DF22296A91500DF328D /* data+extensions.temp_caseinsensitive_rename.swift in Sources */,
+				89BA7DF22296A91500DF328D /* Data+extensions.swift in Sources */,
 				89CDA22322A018EE004576E2 /* UIViewController+extensions.swift in Sources */,
 				89BA7DBF229565E000DF328D /* Popcorn_Swirl.xcdatamodeld in Sources */,
 				894656D0229818EB0073C67D /* FilmCollectionView.swift in Sources */,
