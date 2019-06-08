@@ -37,6 +37,22 @@ extension UIViewController {
         UIApplication.shared.open(url)
     }
     
+    // open URL for ebuzz with film title
+    func ebaySearch(filmTitle : String) {
+        let filmName = filmTitle
+        let formattedString = filmName.replacingOccurrences(of: " ", with: "+")
+        guard let url = URL(string: "https://ebuzz.ie/pages/search-results-page?q=\(formattedString)") else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    // open URL for hollyWoodMemorabila with film title
+    func hollyWoodSearch(filmTitle : String) {
+        let filmName = filmTitle
+        let formattedString = filmName.replacingOccurrences(of: " ", with: "+")
+        guard let url = URL(string: "https://www.hollywoodmemorabilia.com/search2.php?Ntt=\(formattedString)") else { return }
+        UIApplication.shared.open(url)
+    }
+    
     //Create array to do multi lookup
     func createIDArray(object: String) -> [Int] {
         let buttonFilmIDs = CoreDataManager.shared.fetchIndividualButton(object: object)

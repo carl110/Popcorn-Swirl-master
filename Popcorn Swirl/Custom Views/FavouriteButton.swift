@@ -35,8 +35,7 @@ class FavouriteButton: UIButton {
         if sender == self {
             if isFavourite == true {
                 isFavourite = false
-                
-//                CoreDataManager.shared.saveFilmID(filmID: <#T##Int32#>)
+ 
             } else {
                 isFavourite = true
             }

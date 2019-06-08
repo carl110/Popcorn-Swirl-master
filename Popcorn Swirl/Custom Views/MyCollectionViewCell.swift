@@ -25,6 +25,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
 
+
         if watchedButton.isWatched == true {
             self.isHidden = true
         }
@@ -45,6 +46,20 @@ class MyCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         favouriteButton.isFavourite = false
         watchedButton.isWatched = false
+        
+        //Disable buttons and detailed view when id is 0 as set by no favourite/watched list
+        DispatchQueue.main.async {
+            if self.id == 0 {
+                self.favouriteButton.disableButton()
+                self.watchedButton.disableButton()
+                self.isUserInteractionEnabled = false
+            } else {
+                self.favouriteButton.enableButton()
+                self.watchedButton.enableButton()
+                self.isUserInteractionEnabled = true
+            }
+        }
+
     }
     
     func buttonSelected(object: String, filmID: Int32!, pictureName: String, button: UIButton, unselectButtonFunc: Any) {

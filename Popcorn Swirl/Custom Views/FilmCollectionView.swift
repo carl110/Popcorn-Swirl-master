@@ -28,7 +28,7 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
-        
+
         DispatchQueue.main.async {
             //Load list of films in coredata
             let filmList = CoreDataManager.shared.fetchFilmIDs()

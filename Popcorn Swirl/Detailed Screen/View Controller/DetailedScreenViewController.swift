@@ -14,8 +14,8 @@ class DetailedScreenViewController: UIViewController {
     fileprivate var detailedScreenViewModel: DetailedScreenViewModel!
     fileprivate var detailedScreenFlowController: DetailedScreenFlowController!
     fileprivate var individualFilmModel: IndividualFilmModel?
-
-    var filmID = Int()
+    
+    private var filmID = Int()
     
     @IBOutlet weak var filmTitle: UILabel!
     @IBOutlet weak var filmPoster: UIImageView!
@@ -45,8 +45,8 @@ class DetailedScreenViewController: UIViewController {
         searchURLButton.setTitle("Search Amazon", for: .normal)
         searchURLButton.tintColor = UIColor.Shades.standardBlack
         searchURLButton.backgroundColor = UIColor.Yellows.mustardYellow
-        DispatchQueue.main.async {
-            self.searchURLButton.roundCorners(for: .allCorners, cornerRadius: 8)
+        DispatchQueue.main.async { [weak self] in
+            self?.searchURLButton.roundCorners(for: .allCorners, cornerRadius: 8)
         }
         
     }
@@ -56,8 +56,8 @@ class DetailedScreenViewController: UIViewController {
         GetRequests.getIndividualFilm(id: filmID) { (success, filmMedia) in
             if success, let filmMedia = filmMedia {
                 self.individualFilmModel = filmMedia as? IndividualFilmModel
-                DispatchQueue.main.async {
-                    self.populateFilmData()
+                DispatchQueue.main.async { [weak self] in
+                    self?.populateFilmData()
                 }
             } else {
                 self.alert(message: "Unable to load film data")
@@ -83,18 +83,17 @@ class DetailedScreenViewController: UIViewController {
             GetRequests.getImage(imageUrl: imageURL, completion: { (success, imageData) in
                 if success, let imageData = imageData,
                     let artWork = UIImage(data: imageData) {
-                    DispatchQueue.main.async {
-                        self.filmPoster.image = artWork
+                    DispatchQueue.main.async { [weak self] in
+                        self?.filmPoster.image = artWork
                     }
                 }
             })
         }
     }
-
+    
     @IBAction func searchURLButton(_ sender: Any) {
         //Open amazon to search film
         amazonSearch(filmTitle: individualFilmModel!.title)
-
-}
-
+        
+    }
 }
