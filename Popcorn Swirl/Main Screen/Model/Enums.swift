@@ -25,7 +25,7 @@ public enum Images: String {
     case emptyHeart
     case noFilmImage
     case hollywood
-    case ebay
+    case ebuzz
     case amazon
     
     func name() -> String {

@@ -15,10 +15,10 @@ class DetailedScreenViewController: UIViewController {
     fileprivate var detailedScreenFlowController: DetailedScreenFlowController!
     fileprivate var individualFilmModel: IndividualFilmModel?
     
-    let loadingIcon = LoadingView(text: "Loading Film Data")
-    
+    private let loadingIcon = LoadingView(text: "Loading Film Data")
     private var filmID = Int()
-    private var addvertURL = ["amazon", "ebay", "hollywood"].pick(1)
+    private var advertURL = ["amazon", "ebuzz", "hollywood"]
+    private var advertPick: [String] = []
     
     @IBOutlet weak var filmTitle: UILabel!
     @IBOutlet weak var filmPoster: UIImageView!
@@ -26,8 +26,8 @@ class DetailedScreenViewController: UIViewController {
     @IBOutlet weak var filmGenre: UILabel!
     @IBOutlet weak var filmPlot: UILabel!
     @IBOutlet weak var searchURLButton: UIButton!
+    @IBOutlet weak var searchButton2: UIButton!
     
-
     
     func assignDependancies(detailedScreenFlowController: DetailedScreenFlowController, detailedScreenViewModel: DetailedScreenViewModel){
         self.detailedScreenFlowController = detailedScreenFlowController
@@ -36,14 +36,11 @@ class DetailedScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super .viewDidLoad()
-        
-
-        
         setUp()
         loadIndividualFilmData()
         self.title = "Detailed View"
         
-        // remove blur and loading ciews
+        // remove blur and loading views
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) {
             for subview in self.view.subviews {
                 if subview is UIVisualEffectView {
@@ -51,24 +48,32 @@ class DetailedScreenViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     func setUp() {
+        advertPick = advertURL.pick(Int.random(in: 1 ..< advertURL.count))
         filmID = detailedScreenViewModel.filmID
         self.view.backgroundColor = UIColor.Shades.standardBlack
         searchURLButtonSetUp()
         //add blurview with loading spinner
         self.view.blurView(style: .regular)
         self.view.addSubview(loadingIcon)
+        
     }
     
     func searchURLButtonSetUp() {
-
-        searchURLButton.setImage(UIImage(named: addvertURL[0]), for: .normal)
-
+        
+        searchURLButton.setImage(UIImage(named: advertPick[0]), for: .normal)
+        if advertPick.count > 1 {
+            searchButton2.setImage(UIImage(named: advertPick[1]), for: .normal)
+        }
+        
+        
+        
+        
         DispatchQueue.main.async { [weak self] in
             self?.searchURLButton.roundCorners(for: .allCorners, cornerRadius: 8)
+            self?.searchButton2.roundCorners(for: .allCorners, cornerRadius: 8)
         }
         
     }
@@ -115,16 +120,26 @@ class DetailedScreenViewController: UIViewController {
     
     @IBAction func searchURLButton(_ sender: Any) {
         
-        let search = "\(addvertURL[0])"
+        let search = "\(advertPick[0])"
         
         if search == "amazon" {
             amazonSearch(filmTitle: individualFilmModel!.title)
-        } else if search == "ebay" {
-            ebaySearch(filmTitle: individualFilmModel!.title)
+        } else if search == "ebuzz" {
+            ebuzzSearch(filmTitle: individualFilmModel!.title)
         } else if search == "hollywood" {
             hollywoodSearch(filmTitle: individualFilmModel!.title)
         }
-
         
+        
+    }
+    @IBAction func searchButton2(_ sender: Any) {
+        let search = "\(advertPick[1])"
+        if search == "amazon" {
+            amazonSearch(filmTitle: individualFilmModel!.title)
+        } else if search == "ebuzz" {
+            ebuzzSearch(filmTitle: individualFilmModel!.title)
+        } else if search == "hollywood" {
+            hollywoodSearch(filmTitle: individualFilmModel!.title)
+        }
     }
 }

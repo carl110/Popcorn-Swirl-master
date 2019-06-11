@@ -38,12 +38,13 @@ extension UIViewController {
     }
     
     // open URL for ebuzz with film title
-    func ebaySearch(filmTitle : String) {
+    func ebuzzSearch(filmTitle : String) {
         let filmName = filmTitle
         let formattedString = filmName.replacingOccurrences(of: " ", with: "+")
         guard let url = URL(string: "https://ebuzz.ie/pages/search-results-page?q=\(formattedString)") else { return }
         UIApplication.shared.open(url)
     }
+
     
     // open URL for hollyWoodMemorabila with film title
     func hollywoodSearch(filmTitle : String) {

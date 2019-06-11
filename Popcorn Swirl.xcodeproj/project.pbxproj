@@ -16,6 +16,7 @@
 		896B787A22ABDD3F00C5DC6C /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896B787922ABDD3F00C5DC6C /* String+extensions.swift */; };
 		896B787C22ABE13200C5DC6C /* UILabel+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896B787B22ABE13200C5DC6C /* UILabel+extensions.swift */; };
 		8978329A229BFCDB003F5002 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89783299229BFCDB003F5002 /* DataManager.swift */; };
+		8988757322AFD45B002500D2 /* Array+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8988757222AFD45B002500D2 /* Array+extensions.swift */; };
 		89905FC3229E95CF00D94CC7 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89905FC2229E95CF00D94CC7 /* FavouriteButton.swift */; };
 		899B6D5722A15D8900BBBCF6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D5622A15D8900BBBCF6 /* CoreDataManager.swift */; };
 		899B6D5922A15E9100BBBCF6 /* FilmIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899B6D5822A15E9100BBBCF6 /* FilmIDModel.swift */; };
@@ -66,6 +67,7 @@
 		896B787922ABDD3F00C5DC6C /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		896B787B22ABE13200C5DC6C /* UILabel+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extensions.swift"; sourceTree = "<group>"; };
 		89783299229BFCDB003F5002 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		8988757222AFD45B002500D2 /* Array+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extensions.swift"; sourceTree = "<group>"; };
 		89905FC2229E95CF00D94CC7 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		899B6D5622A15D8900BBBCF6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		899B6D5822A15E9100BBBCF6 /* FilmIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmIDModel.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				896B787B22ABE13200C5DC6C /* UILabel+extensions.swift */,
 				89A7334C22A53EC400F4BF56 /* UIView+extensions.swift */,
 				896B787922ABDD3F00C5DC6C /* String+extensions.swift */,
+				8988757222AFD45B002500D2 /* Array+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				894656D322981B3B0073C67D /* FilmModel.swift in Sources */,
 				899B6D5722A15D8900BBBCF6 /* CoreDataManager.swift in Sources */,
 				89CDA22522A13D29004576E2 /* FavouriteModel.swift in Sources */,
+				8988757322AFD45B002500D2 /* Array+extensions.swift in Sources */,
 				89BA7DEA22969AAF00DF328D /* DetailedScreenViewController.swift in Sources */,
 				89BA7DDE229567B100DF328D /* MainFlowController.swift in Sources */,
 				89CDA214229EA782004576E2 /* UIColor+extensions.swift in Sources */,
