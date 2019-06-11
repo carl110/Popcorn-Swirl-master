@@ -24,6 +24,9 @@ public enum Images: String {
     case redHeart
     case emptyHeart
     case noFilmImage
+    case hollywood
+    case ebay
+    case amazon
     
     func name() -> String {
         return self.rawValue

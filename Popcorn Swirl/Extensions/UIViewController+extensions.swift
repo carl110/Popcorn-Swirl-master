@@ -46,7 +46,7 @@ extension UIViewController {
     }
     
     // open URL for hollyWoodMemorabila with film title
-    func hollyWoodSearch(filmTitle : String) {
+    func hollywoodSearch(filmTitle : String) {
         let filmName = filmTitle
         let formattedString = filmName.replacingOccurrences(of: " ", with: "+")
         guard let url = URL(string: "https://www.hollywoodmemorabilia.com/search2.php?Ntt=\(formattedString)") else { return }

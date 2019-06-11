@@ -18,6 +18,7 @@ class DetailedScreenViewController: UIViewController {
     let loadingIcon = LoadingView(text: "Loading Film Data")
     
     private var filmID = Int()
+    private var addvertURL = ["amazon", "ebay", "hollywood"].pick(1)
     
     @IBOutlet weak var filmTitle: UILabel!
     @IBOutlet weak var filmPoster: UIImageView!
@@ -63,9 +64,9 @@ class DetailedScreenViewController: UIViewController {
     }
     
     func searchURLButtonSetUp() {
-        searchURLButton.setTitle("Search Amazon", for: .normal)
-        searchURLButton.tintColor = UIColor.Shades.standardBlack
-        searchURLButton.backgroundColor = UIColor.Yellows.mustardYellow
+
+        searchURLButton.setImage(UIImage(named: addvertURL[0]), for: .normal)
+
         DispatchQueue.main.async { [weak self] in
             self?.searchURLButton.roundCorners(for: .allCorners, cornerRadius: 8)
         }
@@ -113,8 +114,17 @@ class DetailedScreenViewController: UIViewController {
     }
     
     @IBAction func searchURLButton(_ sender: Any) {
-        //Open amazon to search film
-        amazonSearch(filmTitle: individualFilmModel!.title)
+        
+        let search = "\(addvertURL[0])"
+        
+        if search == "amazon" {
+            amazonSearch(filmTitle: individualFilmModel!.title)
+        } else if search == "ebay" {
+            ebaySearch(filmTitle: individualFilmModel!.title)
+        } else if search == "hollywood" {
+            hollywoodSearch(filmTitle: individualFilmModel!.title)
+        }
+
         
     }
 }
