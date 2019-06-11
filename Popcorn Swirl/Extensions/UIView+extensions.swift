@@ -19,4 +19,15 @@ extension UIView {
         self.layer.mask = maskLayer
     }
     
+    
+    //creates a blur effect
+    func blurView(style: UIBlurEffect.Style) {
+        let blurEffect = UIBlurEffect(style: style)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = self.bounds
+        blurView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        addSubview(blurView)
+    }
+
+    
 }

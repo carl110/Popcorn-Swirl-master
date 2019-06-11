@@ -15,6 +15,8 @@ class DetailedScreenViewController: UIViewController {
     fileprivate var detailedScreenFlowController: DetailedScreenFlowController!
     fileprivate var individualFilmModel: IndividualFilmModel?
     
+    let loadingIcon = LoadingView(text: "Loading Film Data")
+    
     private var filmID = Int()
     
     @IBOutlet weak var filmTitle: UILabel!
@@ -24,6 +26,8 @@ class DetailedScreenViewController: UIViewController {
     @IBOutlet weak var filmPlot: UILabel!
     @IBOutlet weak var searchURLButton: UIButton!
     
+
+    
     func assignDependancies(detailedScreenFlowController: DetailedScreenFlowController, detailedScreenViewModel: DetailedScreenViewModel){
         self.detailedScreenFlowController = detailedScreenFlowController
         self.detailedScreenViewModel = detailedScreenViewModel
@@ -31,15 +35,31 @@ class DetailedScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super .viewDidLoad()
+        
+
+        
         setUp()
         loadIndividualFilmData()
         self.title = "Detailed View"
+        
+        // remove blur and loading ciews
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) {
+            for subview in self.view.subviews {
+                if subview is UIVisualEffectView {
+                    subview.removeFromSuperview()
+                }
+            }
+        }
+        
     }
     
     func setUp() {
         filmID = detailedScreenViewModel.filmID
         self.view.backgroundColor = UIColor.Shades.standardBlack
         searchURLButtonSetUp()
+        //add blurview with loading spinner
+        self.view.blurView(style: .regular)
+        self.view.addSubview(loadingIcon)
     }
     
     func searchURLButtonSetUp() {
