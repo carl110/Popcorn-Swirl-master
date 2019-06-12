@@ -79,8 +79,15 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     //set layout for cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let w = collectionView.frame.size.width
-        return CGSize(width: (w - 20), height: 100)
+        
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+            let w = collectionView.frame.size.width
+            return CGSize(width: (w / 2 - 5), height: 150)
+        } else {
+            let w = collectionView.frame.size.width
+            return CGSize(width: (w - 20), height: 100)
+        }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

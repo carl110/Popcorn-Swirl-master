@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 extension Array {
+    
+    //selectc 'n' random from array
     func pick(_ n: Int) -> [Element] {
         guard count >= n else {
             fatalError("The count has to be at least \(n)")

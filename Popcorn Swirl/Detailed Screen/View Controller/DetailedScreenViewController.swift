@@ -41,8 +41,8 @@ class DetailedScreenViewController: UIViewController {
         self.title = "Detailed View"
         
         // remove blur and loading views
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) {
-            for subview in self.view.subviews {
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) { [weak self] in
+            for subview in self!.view.subviews {
                 if subview is UIVisualEffectView {
                     subview.removeFromSuperview()
                 }
@@ -81,7 +81,7 @@ class DetailedScreenViewController: UIViewController {
     func loadIndividualFilmData() {
         
         GetRequests.getIndividualFilm(id: filmID) { (success, filmMedia) in
-            if success, let filmMedia = filmMedia {
+            if success, let filmMedia = filmMedia { 
                 self.individualFilmModel = filmMedia as? IndividualFilmModel
                 DispatchQueue.main.async { [weak self] in
                     self?.populateFilmData()

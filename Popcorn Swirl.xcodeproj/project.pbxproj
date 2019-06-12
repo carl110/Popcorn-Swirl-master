@@ -44,7 +44,6 @@
 		89CDA21F229FE77B004576E2 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA21E229FE77B004576E2 /* RequestBuilder.swift */; };
 		89CDA221229FE7B5004576E2 /* GetRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA220229FE7B5004576E2 /* GetRequests.swift */; };
 		89CDA22322A018EE004576E2 /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA22222A018EE004576E2 /* UIViewController+extensions.swift */; };
-		89CDA22522A13D29004576E2 /* FavouriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA22422A13D29004576E2 /* FavouriteModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +98,6 @@
 		89CDA21E229FE77B004576E2 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		89CDA220229FE7B5004576E2 /* GetRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRequests.swift; sourceTree = "<group>"; };
 		89CDA22222A018EE004576E2 /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
-		89CDA22422A13D29004576E2 /* FavouriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				894656D222981B3B0073C67D /* FilmModel.swift */,
-				89CDA22422A13D29004576E2 /* FavouriteModel.swift */,
 				8930706722A9412700819C69 /* Enums.swift */,
 			);
 			path = Model;
@@ -457,7 +454,6 @@
 				8978329A229BFCDB003F5002 /* DataManager.swift in Sources */,
 				894656D322981B3B0073C67D /* FilmModel.swift in Sources */,
 				899B6D5722A15D8900BBBCF6 /* CoreDataManager.swift in Sources */,
-				89CDA22522A13D29004576E2 /* FavouriteModel.swift in Sources */,
 				8988757322AFD45B002500D2 /* Array+extensions.swift in Sources */,
 				89BA7DEA22969AAF00DF328D /* DetailedScreenViewController.swift in Sources */,
 				89BA7DDE229567B100DF328D /* MainFlowController.swift in Sources */,

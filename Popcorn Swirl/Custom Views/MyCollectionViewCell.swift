@@ -48,15 +48,15 @@ class MyCollectionViewCell: UICollectionViewCell {
         watchedButton.isWatched = false
         
         //Disable buttons and detailed view when id is 0 as set by no favourite/watched list
-        DispatchQueue.main.async {
-            if self.id == 0 {
-                self.favouriteButton.disableButton()
-                self.watchedButton.disableButton()
-                self.isUserInteractionEnabled = false
+        DispatchQueue.main.async { [weak self] in
+            if self?.id == 0 {
+                self?.favouriteButton.disableButton()
+                self?.watchedButton.disableButton()
+                self?.isUserInteractionEnabled = false
             } else {
-                self.favouriteButton.enableButton()
-                self.watchedButton.enableButton()
-                self.isUserInteractionEnabled = true
+                self?.favouriteButton.enableButton()
+                self?.watchedButton.enableButton()
+                self?.isUserInteractionEnabled = true
             }
         }
 

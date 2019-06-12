@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,15 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Popcorn_Swirl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IlD-lO-Fco">
+                                <rect key="frame" x="0.0" y="762" width="414" height="134"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p36-4h-cT9">
-                                <rect key="frame" x="0.0" y="468" width="160.5" height="100"/>
+                                <rect key="frame" x="0.0" y="762" width="205.5" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Favourites">
                                     <color key="titleColor" red="0.98039215690000003" green="0.96470588239999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -29,7 +33,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RM5-Ud-rYq">
-                                <rect key="frame" x="160.5" y="468" width="160.5" height="100"/>
+                                <rect key="frame" x="205.5" y="762" width="205.5" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="SRj-34-5Yo"/>
@@ -42,7 +46,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zOP-Xl-88D" customClass="FilmCollectionView" customModule="Popcorn_Swirl" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="320" height="448"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
                                 <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GcD-Hr-QXO">
                                     <size key="itemSize" width="249" height="97"/>
@@ -60,12 +64,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="RM5-Ud-rYq" secondAttribute="trailing" constant="-17" id="EVk-5J-c5s"/>
                             <constraint firstItem="RM5-Ud-rYq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="NIt-Iz-pHv"/>
                             <constraint firstItem="RM5-Ud-rYq" firstAttribute="width" secondItem="p36-4h-cT9" secondAttribute="width" id="Q1H-YR-A9j"/>
+                            <constraint firstAttribute="bottom" secondItem="IlD-lO-Fco" secondAttribute="bottom" id="Uad-6n-dnR"/>
                             <constraint firstAttribute="trailing" secondItem="zOP-Xl-88D" secondAttribute="trailing" id="X5p-MB-281"/>
                             <constraint firstItem="zOP-Xl-88D" firstAttribute="leading" secondItem="p36-4h-cT9" secondAttribute="leading" id="eAk-kf-twg"/>
                             <constraint firstItem="RM5-Ud-rYq" firstAttribute="height" secondItem="p36-4h-cT9" secondAttribute="height" id="ik8-TF-Wah"/>
                             <constraint firstItem="p36-4h-cT9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nnd-rQ-prl"/>
+                            <constraint firstItem="IlD-lO-Fco" firstAttribute="top" secondItem="zOP-Xl-88D" secondAttribute="bottom" id="otC-K6-Bff"/>
                             <constraint firstItem="zOP-Xl-88D" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sRL-El-OIb"/>
                             <constraint firstItem="RM5-Ud-rYq" firstAttribute="top" secondItem="zOP-Xl-88D" secondAttribute="bottom" id="vmU-pp-Nru"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IlD-lO-Fco" secondAttribute="trailing" id="xN8-tP-SBY"/>
+                            <constraint firstItem="IlD-lO-Fco" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xVU-x6-915"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
