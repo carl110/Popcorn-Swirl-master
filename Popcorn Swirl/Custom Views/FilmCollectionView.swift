@@ -79,7 +79,7 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         //if device is iPad then have 2 cells per row - otherwise 1
         if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
             let w = collectionView.frame.size.width
-            return CGSize(width: (w / 2 - 5), height: 150)
+            return CGSize(width: (w / 2 - 5), height: 100)
         } else {
             let w = collectionView.frame.size.width
             return CGSize(width: (w - 20), height: 100)

@@ -28,7 +28,6 @@ class DetailedScreenViewController: UIViewController {
     @IBOutlet weak var searchURLButton: UIButton!
     @IBOutlet weak var searchButton2: UIButton!
     
-    
     func assignDependancies(detailedScreenFlowController: DetailedScreenFlowController, detailedScreenViewModel: DetailedScreenViewModel){
         self.detailedScreenFlowController = detailedScreenFlowController
         self.detailedScreenViewModel = detailedScreenViewModel
