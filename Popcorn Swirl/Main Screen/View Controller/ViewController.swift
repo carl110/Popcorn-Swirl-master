@@ -23,7 +23,6 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var watchedButton: UIButton!
     
-    
     func assignDependancies(mainFlowController: MainFlowController) {
         self.mainFlowController = mainFlowController
     }

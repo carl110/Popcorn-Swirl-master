@@ -15,20 +15,19 @@ protocol FilmCellSelectedDelegate {
 }
 
 class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
     var cellDelegate: FilmCellSelectedDelegate?
-
+    
     func registerCell() {
         self.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return DataManager.shared.filmList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
-
         DispatchQueue.main.async {
             //Load list of films in coredata
             let filmList = CoreDataManager.shared.fetchFilmIDs()
@@ -44,8 +43,6 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
                 }
             }
         }
-
-        //reversed to show the newest films first
         let filmModel = DataManager.shared.filmList[indexPath.item]
         cell.populate(filmModel: filmModel)
         if let artWorkData = filmModel.artworkData,
@@ -63,12 +60,12 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         }
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let filmModel = DataManager.shared.filmList[indexPath.item]
         let id = filmModel.id
+        //send id to delegate for ViewController
         cellDelegate?.cellWasSelected(id: id)
-        
     }
     
     override func awakeFromNib() {
@@ -79,7 +76,7 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     //set layout for cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        //if device is iPad then have 2 cells per row - otherwise 1
         if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
             let w = collectionView.frame.size.width
             return CGSize(width: (w / 2 - 5), height: 150)
@@ -87,7 +84,6 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
             let w = collectionView.frame.size.width
             return CGSize(width: (w - 20), height: 100)
         }
-
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

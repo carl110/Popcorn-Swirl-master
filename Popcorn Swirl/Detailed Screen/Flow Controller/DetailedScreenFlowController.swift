@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class DetailedScreenFlowController {
-    
+
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {

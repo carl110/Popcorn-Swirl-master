@@ -25,21 +25,20 @@ class FavouriteButton: UIButton {
             }
         }
     }
-
+    
     override func awakeFromNib() {
         self.addTarget(self, action: #selector(heartClicked(sender: )), for: UIControl.Event.touchUpInside)
         self.isFavourite = false
     }
     
+    //when button clicked change image
     @objc func heartClicked(sender: UIButton) {
         if sender == self {
             if isFavourite == true {
                 isFavourite = false
- 
             } else {
                 isFavourite = true
             }
         }
     }
-    
 }

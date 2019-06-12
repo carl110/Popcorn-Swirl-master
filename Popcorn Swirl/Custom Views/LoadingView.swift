@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//add a loading circle to the screen
 class LoadingView: UIVisualEffectView {
     
     var text: String? {

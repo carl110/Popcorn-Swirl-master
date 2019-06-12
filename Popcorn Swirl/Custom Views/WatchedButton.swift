@@ -29,6 +29,7 @@ class WatchedButton: UIButton {
         self.isWatched = false
     }
     
+    //when button clicked change image
     @objc func targetClicked(sender: UIButton) {
         if sender == self {
             if isWatched == true {
@@ -38,5 +39,4 @@ class WatchedButton: UIButton {
             }
         }
     }
-    
 }

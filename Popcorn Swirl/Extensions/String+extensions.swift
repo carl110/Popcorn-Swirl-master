@@ -9,6 +9,7 @@
 import Foundation
 
 extension String {
+    
     //Convert text to title case "This Is Title Case"
     func titlecased() -> String {
         return self.replacingOccurrences(of: "([A-Z])", with: " $1", options: .regularExpression, range: self.range(of: self))
@@ -38,7 +39,6 @@ extension String {
         //set first section with lowercase and rest with capital as first character
         let first = String(describing: parts.first!).lowercasingFirst
         let rest = parts.dropFirst().map({String($0).uppercasingFirst})
-        
         return ([first] + rest).joined(separator: "")
     }
 }

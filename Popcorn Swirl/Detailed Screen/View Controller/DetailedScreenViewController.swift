@@ -51,6 +51,7 @@ class DetailedScreenViewController: UIViewController {
     }
     
     func setUp() {
+        //randomly pick 1 - number of adverts from array
         advertPick = advertURL.pick(Int.random(in: 1 ..< advertURL.count))
         filmID = detailedScreenViewModel.filmID
         self.view.backgroundColor = UIColor.Shades.standardBlack
@@ -58,28 +59,21 @@ class DetailedScreenViewController: UIViewController {
         //add blurview with loading spinner
         self.view.blurView(style: .regular)
         self.view.addSubview(loadingIcon)
-        
     }
     
     func searchURLButtonSetUp() {
-        
         searchURLButton.setImage(UIImage(named: advertPick[0]), for: .normal)
+        //if there are 2 adverts then show
         if advertPick.count > 1 {
             searchButton2.setImage(UIImage(named: advertPick[1]), for: .normal)
         }
-        
-        
-        
-        
         DispatchQueue.main.async { [weak self] in
             self?.searchURLButton.roundCorners(for: .allCorners, cornerRadius: 8)
             self?.searchButton2.roundCorners(for: .allCorners, cornerRadius: 8)
         }
-        
     }
     
     func loadIndividualFilmData() {
-        
         GetRequests.getIndividualFilm(id: filmID) { (success, filmMedia) in
             if success, let filmMedia = filmMedia { 
                 self.individualFilmModel = filmMedia as? IndividualFilmModel
@@ -96,16 +90,15 @@ class DetailedScreenViewController: UIViewController {
         guard let filmMedia = self.individualFilmModel else {
             return
         }
-        
         filmTitle.text = filmMedia.title
         filmYearOfRelease.text = String(filmMedia.yearOfRelease.prefix(10))
         filmGenre.text  = filmMedia.catagory
         filmPlot.text = filmMedia.plot
-        
+        //if no plot from API place holder text
         if filmPlot.text == nil {
             print ("no data")
         }
-        
+        //Get image from URL
         if let imageURL = URL(string: filmMedia.artworkURL) {
             GetRequests.getImage(imageUrl: imageURL, completion: { (success, imageData) in
                 if success, let imageData = imageData,
@@ -119,9 +112,8 @@ class DetailedScreenViewController: UIViewController {
     }
     
     @IBAction func searchURLButton(_ sender: Any) {
-        
         let search = "\(advertPick[0])"
-        
+        //set URL redirect from array
         if search == "amazon" {
             amazonSearch(filmTitle: individualFilmModel!.title)
         } else if search == "ebuzz" {
@@ -129,11 +121,11 @@ class DetailedScreenViewController: UIViewController {
         } else if search == "hollywood" {
             hollywoodSearch(filmTitle: individualFilmModel!.title)
         }
-        
-        
     }
+    
     @IBAction func searchButton2(_ sender: Any) {
         let search = "\(advertPick[1])"
+        //set URL redirect from array
         if search == "amazon" {
             amazonSearch(filmTitle: individualFilmModel!.title)
         } else if search == "ebuzz" {

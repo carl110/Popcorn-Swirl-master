@@ -20,7 +20,7 @@ extension UIView {
     }
     
     
-    //creates a blur effect
+    //creates a blur effect on view its added to 
     func blurView(style: UIBlurEffect.Style) {
         let blurEffect = UIBlurEffect(style: style)
         let blurView = UIVisualEffectView(effect: blurEffect)

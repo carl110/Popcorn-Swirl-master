@@ -23,9 +23,6 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-
-
         if watchedButton.isWatched == true {
             self.isHidden = true
         }
@@ -42,7 +39,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     func setImage(image: UIImage) {
         artWorkImage.image = image
     }
-
+    
     override func prepareForReuse() {
         favouriteButton.isFavourite = false
         watchedButton.isWatched = false
@@ -59,15 +56,13 @@ class MyCollectionViewCell: UICollectionViewCell {
                 self?.isUserInteractionEnabled = true
             }
         }
-
     }
     
     func buttonSelected(object: String, filmID: Int32!, pictureName: String, button: UIButton, unselectButtonFunc: Any) {
-        
         let favouriteIDList = CoreDataManager.shared.fetchIndividualID(filmID: filmID)
         //if button image is unselected image
         if (button.currentImage?.isEqual(UIImage(named: pictureName)))! {
-            //filmIOD stored
+            //filmID stored
             if favouriteIDList!.count > 0 {
                 //updated just the button marker
                 CoreDataManager.shared.updateButtonBool(object: object, updatedEntry: true, filmID: filmID)

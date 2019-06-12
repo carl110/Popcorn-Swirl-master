@@ -18,6 +18,8 @@ public enum ButtonCase: String {
     }
 }
 
+
+// list of custom images
 public enum Images: String {
     case notWatched
     case watched
