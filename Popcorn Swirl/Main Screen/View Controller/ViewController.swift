@@ -14,7 +14,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     fileprivate var individualFilmModel: [IndividualFilmModel]?
     
     private var filmDataSource = DataManager.shared.filmList
-    private let filmSearch = "2019"
+    private var filmSearch = Date().year
     private let watchedURL = "https://img.icons8.com/office/50/000000/accuracy.png"
     private let favouritetURL = "https://img.icons8.com/color/50/000000/hearts.png"
     private let myTitle = "Film List"
@@ -29,15 +29,16 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUp()
         filmCollectionView.cellDelegate = self
         loadData(movieSearch: filmSearch)
-        setUp()
     }
     
     func setUp() {
         favouriteButton.setImage(UIImage(named: Images.redHeart.name()), for: .normal)
         watchedButton.setImage(UIImage(named: Images.watched.name()), for: .normal)
         self.title = myTitle
+        
     }
     
     //Delegate function
@@ -45,6 +46,11 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         mainFlowController.showDetailedScreen(with: id)
     }
     
+    func nearingScrollEnd(year: Int) {
+        addDataToArray(movieSearch: String(Int(filmSearch)! - year))
+    }
+    
+    //creates new array
     func loadData(movieSearch: String) {
         //get list of films from term
         GetRequests.getFilmList(term: movieSearch) { (success, list) in
@@ -54,6 +60,21 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
                     self?.filmCollectionView.reloadData()
                 }
             } else { 
+                self.alert(message: "Could not load data as not found")
+            }
+        }
+    }
+    
+    //appends to existing array
+    func addDataToArray(movieSearch: String) {
+        //get list of films from term
+        GetRequests.getFilmList(term: movieSearch) { (success, list) in
+            if success, let list = list {
+                DataManager.shared.filmList += list
+                DispatchQueue.main.async { [weak self] in
+                    self?.filmCollectionView.reloadData()
+                }
+            } else {
                 self.alert(message: "Could not load data as not found")
             }
         }
@@ -73,14 +94,14 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         }
     }
     
-    func selectButton(button: UIButton, buttonIamgeSelectedSate: String, otherButton: UIButton, otherButtonSelectedSate: String, buttonCase: String, otherButtonCase: String, pictureURL: String) {
+    func selectButton(button: UIButton, buttonImageSelectedSate: String, otherButton: UIButton, otherButtonSelectedSate: String, buttonCase: String, otherButtonCase: String, pictureURL: String, buttonTitle: String) {
+        
         //Set Button image and title
-        button.setImage(UIImage(named: buttonIamgeSelectedSate), for: .normal)
-        button.setTitle("View All", for: .normal)
+        button.setImage(UIImage(named: buttonImageSelectedSate), for: .normal)
+        button.setTitle("Exit \(buttonTitle) list", for: .normal)
         
         //if other button already selected
         if(otherButton.currentImage?.isEqual(UIImage(named: otherButtonSelectedSate)))! {
-            print ("selecte and other button selected")
             
             //combine IDs from favourites and watched and show only those that are both
             let joinedArray = Array(Set(createIDArray(object: buttonCase)).intersection(createIDArray(object: otherButtonCase)))
@@ -101,13 +122,13 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         } else {
             filmArrayIsEmpty(object: buttonCase, idArray: createIDArray(object: buttonCase), pictureURL: pictureURL)
             
-            self.title = "\(buttonCase) List"
+            self.title = "\(buttonTitle) List"
         }
     }
     
-    func unSelectButton(button: UIButton, buttonImageCurrentState: String, otherButton: UIButton, otherButtonSelectedSate: String, otherButtonCase: String, buttonTitleUnselected: String, pictureURL: String, buttonCase: String) {
+    func unSelectButton(button: UIButton, buttonImageCurrentState: String, otherButton: UIButton, otherButtonSelectedSate: String, otherButtonCase: String, buttonTitle: String, pictureURL: String, buttonCase: String) {
         button.setImage(UIImage(named: buttonImageCurrentState), for: .normal)
-        button.setTitle(buttonTitleUnselected, for: .normal)
+        button.setTitle(buttonTitle, for: .normal)
         
         //if other button selected
         if(otherButton.currentImage?.isEqual(UIImage(named: otherButtonSelectedSate)))! {
@@ -115,11 +136,10 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
             //show all other button items
             filmArrayIsEmpty(object: otherButtonCase, idArray: createIDArray(object: otherButtonCase), pictureURL: pictureURL)
             
-            self.title = "\(otherButtonCase) List"
+            self.title = "\(buttonTitle) List"
         } else {
             //show full list
             loadData(movieSearch: filmSearch)
-            
             self.title = myTitle
         }
     }
@@ -142,22 +162,24 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     }
     
     @IBAction func favouriteButton(_ sender: Any) {
+
         
         if (favouriteButton.currentImage?.isEqual(UIImage(named: Images.redHeart.name())))! {
             selectButton(button: favouriteButton,
-                         buttonIamgeSelectedSate: Images.emptyHeart.name(),
+                         buttonImageSelectedSate: Images.emptyHeart.name(),
                          otherButton: watchedButton,
                          otherButtonSelectedSate: Images.notWatched.name(),
                          buttonCase: ButtonCase.favourite.name(),
                          otherButtonCase: ButtonCase.watched.name(),
-                         pictureURL: favouritetURL)
+                         pictureURL: favouritetURL,
+                         buttonTitle: "Favourites")
         } else {
             unSelectButton(button: favouriteButton,
                            buttonImageCurrentState: Images.redHeart.name(),
                            otherButton: watchedButton,
                            otherButtonSelectedSate: Images.notWatched.name(),
                            otherButtonCase: ButtonCase.watched.name(),
-                           buttonTitleUnselected: "Favourites",
+                           buttonTitle: "Favourites",
                            pictureURL: favouritetURL,
                            buttonCase: ButtonCase.favourite.name())
         }
@@ -167,19 +189,20 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         
         if (watchedButton.currentImage?.isEqual(UIImage(named: Images.watched.name())))! {
             selectButton(button: watchedButton,
-                         buttonIamgeSelectedSate: Images.notWatched.name(),
+                         buttonImageSelectedSate: Images.notWatched.name(),
                          otherButton: favouriteButton,
                          otherButtonSelectedSate: Images.emptyHeart.name(),
                          buttonCase: ButtonCase.watched.name(),
                          otherButtonCase: ButtonCase.favourite.name(),
-                         pictureURL: watchedURL)
+                         pictureURL: watchedURL,
+                         buttonTitle: "Watched")
         } else {
             unSelectButton(button: watchedButton,
                            buttonImageCurrentState: Images.watched.name(),
                            otherButton: favouriteButton,
                            otherButtonSelectedSate: Images.emptyHeart.name(),
                            otherButtonCase: ButtonCase.favourite.name(),
-                           buttonTitleUnselected: "Watched",
+                           buttonTitle: "Watched",
                            pictureURL: watchedURL,
                            buttonCase: ButtonCase.watched.name())
         }

@@ -58,29 +58,28 @@ class MyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func buttonSelected(object: String, filmID: Int32!, pictureName: String, button: UIButton, unselectButtonFunc: Any) {
+    func buttonSelected(object: String, filmID: Int32!) {
         let favouriteIDList = CoreDataManager.shared.fetchIndividualID(filmID: filmID)
-        //if button image is unselected image
-        if (button.currentImage?.isEqual(UIImage(named: pictureName)))! {
+
             //filmID stored
             if favouriteIDList!.count > 0 {
+                
                 //updated just the button marker
                 CoreDataManager.shared.updateButtonBool(object: object, updatedEntry: true, filmID: filmID)
             } else {
+                
                 //if not add filmID Object to popcorn swirl entity
                 CoreDataManager.shared.saveFilmID(filmID: filmID, object: object)
             }
-        } else {
-            //function for unselecting button
-            unselectButtonFunc
-        }
     }
     
     func favouriteButtonUnselected(filmID: Int32!) {
         let favouriteIDList = CoreDataManager.shared.fetchIndividualID(filmID: filmID)
+        
         //if watched data is true
         for data in favouriteIDList! {
             if data.watched == true {
+                
                 //set favourite to false
                 CoreDataManager.shared.updateButtonBool(object: ButtonCase.favourite.name(), updatedEntry: false, filmID: filmID)
             } else {
@@ -91,9 +90,11 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     func watchedButtonUnselected(filmID: Int32!) {
         let favouriteIDList = CoreDataManager.shared.fetchIndividualID(filmID: filmID)
+        
         //if favourite data is true
         for data in favouriteIDList! {
             if data.favourite == true {
+                
                 //set watched to false
                 CoreDataManager.shared.updateButtonBool(object: ButtonCase.watched.name(), updatedEntry: false, filmID: filmID)
             } else {
@@ -103,9 +104,26 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func favouriteButton(_ sender: Any) {
-        buttonSelected(object: ButtonCase.favourite.name(), filmID: id!, pictureName: Images.emptyHeart.name(), button: favouriteButton, unselectButtonFunc: favouriteButtonUnselected(filmID: id!))
+        if (favouriteButton.currentImage?.isEqual(UIImage(named: Images.emptyHeart.name())))! {
+            
+            //function for selecting button
+            buttonSelected(object: ButtonCase.favourite.name(), filmID: id)
+        } else {
+            
+            //function for unselecting button
+            favouriteButtonUnselected(filmID: id)
+        }
     }
+    
     @IBAction func watchedButton(_ sender: Any) {
-        buttonSelected(object: ButtonCase.watched.name(), filmID: id!, pictureName: Images.notWatched.name(), button: watchedButton, unselectButtonFunc: watchedButtonUnselected(filmID: id!))
+        if (watchedButton.currentImage?.isEqual(UIImage(named: Images.notWatched.name())))! {
+            
+            //function for selecting button
+            buttonSelected(object: ButtonCase.watched.name(), filmID: id)
+        } else {
+            
+            //function for unselecting button
+            watchedButtonUnselected(filmID: id)
+        }
     }
 }
