@@ -36,6 +36,7 @@
 		89BA7DEA22969AAF00DF328D /* DetailedScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA7DE922969AAF00DF328D /* DetailedScreenViewController.swift */; };
 		89BA7DEC22969BB100DF328D /* DetailedScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BA7DEB22969BB100DF328D /* DetailedScreen.storyboard */; };
 		89BA7DEF22969FFB00DF328D /* DetailedScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BA7DEE22969FFB00DF328D /* DetailedScreenViewModel.swift */; };
+		89C70CE422B3A00B00F3A4F1 /* Date+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C70CE322B3A00A00F3A4F1 /* Date+extensions.swift */; };
 		89CDA214229EA782004576E2 /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA213229EA782004576E2 /* UIColor+extensions.swift */; };
 		89CDA217229EB31C004576E2 /* IndividualFilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA216229EB31C004576E2 /* IndividualFilmModel.swift */; };
 		89CDA21D229FE693004576E2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDA21C229FE693004576E2 /* Services.swift */; };
@@ -88,6 +89,7 @@
 		89BA7DE922969AAF00DF328D /* DetailedScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedScreenViewController.swift; sourceTree = "<group>"; };
 		89BA7DEB22969BB100DF328D /* DetailedScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedScreen.storyboard; sourceTree = "<group>"; };
 		89BA7DEE22969FFB00DF328D /* DetailedScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedScreenViewModel.swift; sourceTree = "<group>"; };
+		89C70CE322B3A00A00F3A4F1 /* Date+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extensions.swift"; sourceTree = "<group>"; };
 		89CDA213229EA782004576E2 /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 		89CDA216229EB31C004576E2 /* IndividualFilmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualFilmModel.swift; sourceTree = "<group>"; };
 		89CDA21C229FE693004576E2 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				89A7334C22A53EC400F4BF56 /* UIView+extensions.swift */,
 				896B787922ABDD3F00C5DC6C /* String+extensions.swift */,
 				8988757222AFD45B002500D2 /* Array+extensions.swift */,
+				89C70CE322B3A00A00F3A4F1 /* Date+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				89BA7DDE229567B100DF328D /* MainFlowController.swift in Sources */,
 				89CDA214229EA782004576E2 /* UIColor+extensions.swift in Sources */,
 				89A7334D22A53EC400F4BF56 /* UIView+extensions.swift in Sources */,
+				89C70CE422B3A00B00F3A4F1 /* Date+extensions.swift in Sources */,
 				89BA7DE822969A7800DF328D /* DetailedScreenFlowController.swift in Sources */,
 				8930706822A9412700819C69 /* Enums.swift in Sources */,
 				89CDA221229FE7B5004576E2 /* GetRequests.swift in Sources */,

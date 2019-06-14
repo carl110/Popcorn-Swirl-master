@@ -15,7 +15,6 @@ class DetailedScreenViewController: UIViewController {
     fileprivate var detailedScreenFlowController: DetailedScreenFlowController!
     fileprivate var individualFilmModel: IndividualFilmModel?
     
-    private let loadingIcon = LoadingView(text: "Loading Film Data")
     private var filmID = Int()
     private var advertURL = ["amazon", "ebuzz", "hollywood"]
     private var advertPick: [String] = []
@@ -38,15 +37,6 @@ class DetailedScreenViewController: UIViewController {
         setUp()
         loadIndividualFilmData()
         self.title = "Detailed View"
-        
-        // remove blur and loading views
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 2) { [weak self] in
-            for subview in self!.view.subviews {
-                if subview is UIVisualEffectView {
-                    subview.removeFromSuperview()
-                }
-            }
-        }
     }
     
     func setUp() {
@@ -56,8 +46,7 @@ class DetailedScreenViewController: UIViewController {
         self.view.backgroundColor = UIColor.Shades.standardBlack
         searchURLButtonSetUp()
         //add blurview with loading spinner
-        self.view.blurView(style: .regular)
-        self.view.addSubview(loadingIcon)
+        self.view.blackOverlay(loadingIconText: "Loading Film Data")
     }
     
     func searchURLButtonSetUp() {

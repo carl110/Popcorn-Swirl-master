@@ -28,6 +28,31 @@ extension UIView {
         blurView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(blurView)
     }
-
     
+    //add black overlaty to whole view (including viewcontroller) with the loadingView
+    func blackOverlay(loadingIconText: String) {
+        
+        //set loadingView
+        let loadingIcon = LoadingView(text: loadingIconText)
+        
+        //setup black backgoround
+        let overlay: UIView?
+        
+        //setting frame to be full screen
+        overlay = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        
+        //set see through
+        overlay?.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        
+        //add subviews to full window
+        let currentWindow: UIWindow? = UIApplication.shared.keyWindow
+        currentWindow?.addSubview(overlay!)
+        currentWindow?.addSubview(loadingIcon)
+        
+        //remove views after time
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            loadingIcon.removeFromSuperview()
+            overlay?.removeFromSuperview()
+        }
+    }
 }

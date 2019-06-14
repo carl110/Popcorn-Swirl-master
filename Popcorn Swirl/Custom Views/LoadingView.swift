@@ -48,8 +48,8 @@ class LoadingView: UIVisualEffectView {
         super.didMoveToSuperview()
         
         if let superview = self.superview {
-            
-            let width = superview.frame.size.width / 1.5
+
+            let width: CGFloat = 200.0
             let height: CGFloat = 50.0
             self.frame = CGRect(x: superview.frame.size.width / 2 - width / 2,
                                 y: superview.frame.height / 2 - height / 2,
@@ -67,7 +67,7 @@ class LoadingView: UIVisualEffectView {
             layer.masksToBounds = true
             label.text = text
             label.lineBreakMode = .byWordWrapping
-            label.textAlignment = NSTextAlignment.center
+            label.textAlignment = NSTextAlignment.left
             label.frame = CGRect(x: activityIndicatorSize + 5,
                                  y: 0,
                                  width: width - activityIndicatorSize,
