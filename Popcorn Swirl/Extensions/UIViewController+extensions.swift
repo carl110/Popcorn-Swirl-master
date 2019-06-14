@@ -65,8 +65,8 @@ extension UIViewController {
         return buttonFilmIDArray
     }
     
-    func showWatchedCommentsAlert(title: String? = "Watched Item",
-                            subtitle: String? = "Add your comments frothis film in the box below.",
+    func showWatchedCommentsAlert(title: String? = "Watched Film",
+                            subtitle: String? = "Add your comments for this film below.",
                             actionTitle: String? = "Save Comment",
                             comments: String? = nil,
                             actionHandler: ((_ comment: String?) -> Void)? = nil) {
@@ -75,6 +75,8 @@ extension UIViewController {
         
         alert.addTextField { (comment:UITextField) in
             comment.placeholder = comments
+            
+            
         }
         
         let actionButton = UIAlertAction(title: actionTitle, style: .destructive, handler: { (action:UIAlertAction) in
