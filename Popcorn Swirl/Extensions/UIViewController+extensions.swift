@@ -64,5 +64,41 @@ extension UIViewController {
         }
         return buttonFilmIDArray
     }
+    
+    func showWatchedCommentsAlert(title: String? = "Watched Item",
+                            subtitle: String? = "Add your comments frothis film in the box below.",
+                            actionTitle: String? = "Save Comment",
+                            comments: String? = nil,
+                            actionHandler: ((_ comment: String?) -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        
+        alert.addTextField { (comment:UITextField) in
+            comment.placeholder = comments
+        }
+        
+        let actionButton = UIAlertAction(title: actionTitle, style: .destructive, handler: { (action:UIAlertAction) in
+            guard let commentField =  alert.textFields?[0] else {
+                actionHandler?(nil)
+                return
+            }
+         
+            actionHandler?(commentField.text)
+        })
+        alert.addAction(actionButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    //alert box with switch to show options per button set up
+    func alertBoxWithAction(title: String, message: String, options: String..., completion: @escaping (Int) -> Void) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        for (index, option) in options.enumerated() {
+            alertController.addAction(UIAlertAction.init(title: option, style: .default, handler: { (action) in
+                completion(index)
+            }))
+        }
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+
 }
 

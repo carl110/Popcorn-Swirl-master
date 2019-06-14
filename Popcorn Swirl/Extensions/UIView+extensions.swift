@@ -55,4 +55,15 @@ extension UIView {
             overlay?.removeFromSuperview()
         }
     }
+    
+    //Find viewcontroller of current view ie custom table etc
+    func findViewController() -> UIViewController? {
+        if let nextResponder = self.next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = self.next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
+        }
+    }
 }

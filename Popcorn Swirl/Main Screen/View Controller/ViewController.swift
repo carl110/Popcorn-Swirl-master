@@ -115,18 +115,20 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
                     artworkURL: pictureURL)]
                 filmCollectionView.reloadData()
             } else {
+                
                 //Show filtered list
                 loadDataFromID(filmID: Array(Set(createIDArray(object: buttonCase)).intersection((createIDArray(object: otherButtonCase)))))
             }
             self.title = "Watched and Favourites List"
         } else {
-            filmArrayIsEmpty(object: buttonCase, idArray: createIDArray(object: buttonCase), pictureURL: pictureURL)
             
+            //if other button not selected
+            filmArrayIsEmpty(object: buttonCase, idArray: createIDArray(object: buttonCase), pictureURL: pictureURL)
             self.title = "\(buttonTitle) List"
         }
     }
     
-    func unSelectButton(button: UIButton, buttonImageCurrentState: String, otherButton: UIButton, otherButtonSelectedSate: String, otherButtonCase: String, buttonTitle: String, pictureURL: String, buttonCase: String) {
+    func unSelectButton(button: UIButton, buttonImageCurrentState: String, otherButton: UIButton, otherButtonSelectedSate: String, otherButtonCase: String, buttonTitle: String,otherButtonTitle: String, pictureURL: String, buttonCase: String) {
         button.setImage(UIImage(named: buttonImageCurrentState), for: .normal)
         button.setTitle(buttonTitle, for: .normal)
         
@@ -136,9 +138,10 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
             //show all other button items
             filmArrayIsEmpty(object: otherButtonCase, idArray: createIDArray(object: otherButtonCase), pictureURL: pictureURL)
             
-            self.title = "\(buttonTitle) List"
+            self.title = "\(otherButtonTitle) List"
         } else {
-            //show full list
+            
+            //if other button not selected - show full list
             loadData(movieSearch: filmSearch)
             self.title = myTitle
         }
@@ -180,7 +183,8 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
                            otherButtonSelectedSate: Images.notWatched.name(),
                            otherButtonCase: ButtonCase.watched.name(),
                            buttonTitle: "Favourites",
-                           pictureURL: favouritetURL,
+                           otherButtonTitle: "Watched",
+                           pictureURL: watchedURL,
                            buttonCase: ButtonCase.favourite.name())
         }
     }
@@ -203,7 +207,8 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
                            otherButtonSelectedSate: Images.emptyHeart.name(),
                            otherButtonCase: ButtonCase.favourite.name(),
                            buttonTitle: "Watched",
-                           pictureURL: watchedURL,
+                           otherButtonTitle: "Favourites",
+                           pictureURL: favouritetURL,
                            buttonCase: ButtonCase.watched.name())
         }
     }

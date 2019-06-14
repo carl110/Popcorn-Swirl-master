@@ -20,7 +20,7 @@ class LoadingView: UIVisualEffectView {
     
     let activityIndictor: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
     let label: UILabel = UILabel()
-    let blurEffect = UIBlurEffect(style: .light)
+    let blurEffect = UIBlurEffect(style: .extraLight)
     let vibrancyView: UIVisualEffectView
     
     init(text: String) {

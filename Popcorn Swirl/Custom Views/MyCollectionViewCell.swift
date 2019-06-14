@@ -60,17 +60,17 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     func buttonSelected(object: String, filmID: Int32!) {
         let favouriteIDList = CoreDataManager.shared.fetchIndividualID(filmID: filmID)
-
-            //filmID stored
-            if favouriteIDList!.count > 0 {
-                
-                //updated just the button marker
-                CoreDataManager.shared.updateButtonBool(object: object, updatedEntry: true, filmID: filmID)
-            } else {
-                
-                //if not add filmID Object to popcorn swirl entity
-                CoreDataManager.shared.saveFilmID(filmID: filmID, object: object)
-            }
+        
+        //filmID stored
+        if favouriteIDList!.count > 0 {
+            
+            //updated just the button marker
+            CoreDataManager.shared.updateButtonBool(object: object, updatedEntry: true, filmID: filmID)
+        } else {
+            
+            //if not add filmID Object to popcorn swirl entity
+            CoreDataManager.shared.saveFilmID(filmID: filmID, object: object)
+        }
     }
     
     func favouriteButtonUnselected(filmID: Int32!) {
@@ -103,6 +103,31 @@ class MyCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func addCommentAlert() {
+        //show alertbox to add comments for watched films
+        findViewController()?.showWatchedCommentsAlert(comments: "Add comments here...",
+                                                       actionHandler: { (commentInput:String?) in
+                                                        
+                                                        if commentInput!.isEmpty {
+                                                            //Alert to confirm no comments
+                                                            self.findViewController()?.alertBoxWithAction(
+                                                                title: "Watched Film Comment",
+                                                                message: "Are you sure you wish to proceed without saving a comment?",
+                                                                options: "Add a comment", "Proceed without a comment") { (option) in
+                                                                    switch(option) {
+                                                                    case 0:
+                                                                        self.addCommentAlert()
+                                                                    default:
+                                                                        break
+                                                                    }
+                                                            }
+                                                        } else {
+                                                            CoreDataManager.shared.updateWatchedComment(commentToAdd: commentInput!, filmID: self.id!)
+                                                        }
+                                                        
+        })
+    }
+    
     @IBAction func favouriteButton(_ sender: Any) {
         if (favouriteButton.currentImage?.isEqual(UIImage(named: Images.emptyHeart.name())))! {
             
@@ -120,8 +145,10 @@ class MyCollectionViewCell: UICollectionViewCell {
             
             //function for selecting button
             buttonSelected(object: ButtonCase.watched.name(), filmID: id)
-        } else {
+            addCommentAlert()
             
+        } else {
+            CoreDataManager.shared.removeWatchedComment(filmID: id!)
             //function for unselecting button
             watchedButtonUnselected(filmID: id)
         }

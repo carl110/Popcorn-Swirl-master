@@ -87,7 +87,7 @@ class CoreDataManager{
         }
     }
     
- 
+    
     func fetchIndividualID(filmID: Int32) -> [FilmIDModel]? {
         let appDelegate =
             UIApplication.shared.delegate as? AppDelegate
@@ -177,6 +177,60 @@ class CoreDataManager{
             let tasks = try managedContext.fetch(fetchRequest)
             if let last = tasks.last {
                 last.setValue(updatedEntry, forKey: object)
+                
+                do {
+                    try managedContext.save()
+                } catch {
+                    let error = error as NSError
+                    fatalError("could not save. \(error), \(error.userInfo)")
+                }
+            }
+        } catch let error as NSError {
+            print ("Could not fetch \(error). \(error.userInfo))")
+        }
+    }
+    
+    func updateWatchedComment (commentToAdd: String, filmID: Int32) {
+        //Update watched comment held in coredata
+        let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
+        let managedContext = appDelegate!.persistentContainer.viewContext
+        
+        let predicate = NSPredicate(format: "filmID == %i", filmID)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Popcorn_Swirl")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let tasks = try managedContext.fetch(fetchRequest)
+            if let last = tasks.last {
+                last.setValue(commentToAdd, forKey: "watchedComments")
+                
+                do {
+                    try managedContext.save()
+                } catch {
+                    let error = error as NSError
+                    fatalError("could not save. \(error), \(error.userInfo)")
+                }
+            }
+        } catch let error as NSError {
+            print ("Could not fetch \(error). \(error.userInfo))")
+        }
+    }
+    
+    func removeWatchedComment (filmID: Int32) {
+        //Update watched comment held in coredata
+        let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate
+        let managedContext = appDelegate!.persistentContainer.viewContext
+        
+        let predicate = NSPredicate(format: "filmID == %i", filmID)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Popcorn_Swirl")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let tasks = try managedContext.fetch(fetchRequest)
+            if let last = tasks.last {
+                last.setValue(nil, forKey: "watchedComments")
                 
                 do {
                     try managedContext.save()

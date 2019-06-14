@@ -14,10 +14,12 @@ class FilmIDModel {
     var filmID: Int32
     var favourite: Bool
     var watched: Bool
+    var watchedComment: String
     
     init(object: NSManagedObject) {
         self.filmID = object.value(forKey: "filmID") as! Int32
         self.favourite = object.value(forKey: "favourite") as? Bool ?? false
         self.watched = object.value(forKey: "watched") as? Bool ?? false
+        self.watchedComment = object.value(forKey: "watchedComments") as? String ?? ""
     }
 }

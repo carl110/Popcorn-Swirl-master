@@ -26,6 +26,9 @@ class DetailedScreenViewController: UIViewController {
     @IBOutlet weak var filmPlot: UILabel!
     @IBOutlet weak var searchURLButton: UIButton!
     @IBOutlet weak var searchButton2: UIButton!
+    @IBOutlet weak var watchedFilmComments: UILabel!
+    @IBOutlet weak var watchedImage: UIImageView!
+    @IBOutlet weak var favouriteImage: UIImageView!
     
     func assignDependancies(detailedScreenFlowController: DetailedScreenFlowController, detailedScreenViewModel: DetailedScreenViewModel){
         self.detailedScreenFlowController = detailedScreenFlowController
@@ -86,6 +89,19 @@ class DetailedScreenViewController: UIViewController {
         if filmPlot.text == nil {
             print ("no data")
         }
+        
+        //Add comment if added for favourite films
+        let watchedComment = CoreDataManager.shared.fetchIndividualID(filmID: Int32(filmID))
+        for data in watchedComment! {
+            watchedFilmComments.text = data.watchedComment
+            if data.favourite == true {
+                favouriteImage.image = UIImage(named: Images.redHeart.name())
+            }
+            if data.watched == true {
+                watchedImage.image = UIImage(named: Images.watched.name())
+            }
+        }
+
         //Get image from URL
         if let imageURL = URL(string: filmMedia.artworkURL) {
             GetRequests.getImage(imageUrl: imageURL, completion: { (success, imageData) in
