@@ -38,7 +38,6 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         favouriteButton.setImage(UIImage(named: Images.redHeart.name()), for: .normal)
         watchedButton.setImage(UIImage(named: Images.watched.name()), for: .normal)
         self.title = myTitle
-        
     }
     
     //Delegate function
@@ -52,6 +51,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     
     //creates new array
     func loadData(movieSearch: String) {
+        
         //get list of films from term
         GetRequests.getFilmList(term: movieSearch) { (success, list) in
             if success, let list = list {

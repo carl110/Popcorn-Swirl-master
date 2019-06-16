@@ -20,6 +20,7 @@ class MainFactory {
         navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.Shades.standardBlack]
         
         let mainController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ViewController
+        
         let mainFlowController = MainFlowController(navigationController: navigationController)
         
         mainController.assignDependancies(mainFlowController: mainFlowController)

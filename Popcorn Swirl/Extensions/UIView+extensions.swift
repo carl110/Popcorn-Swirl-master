@@ -46,14 +46,20 @@ extension UIView {
         
         //add subviews to full window
         let currentWindow: UIWindow? = UIApplication.shared.keyWindow
+        
+        //set tags to allow removoval from superview
+        overlay?.tag = 1
+        loadingIcon.tag = 2
         currentWindow?.addSubview(overlay!)
         currentWindow?.addSubview(loadingIcon)
+    }
+    
+    func removeBlakcOverLay() {
         
-        //remove views after time
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            loadingIcon.removeFromSuperview()
-            overlay?.removeFromSuperview()
-        }
+        //remove subviews using tags assigned
+        let currentWindow: UIWindow? = UIApplication.shared.keyWindow
+        currentWindow?.viewWithTag(1)?.removeFromSuperview()
+        currentWindow?.viewWithTag(2)?.removeFromSuperview()
     }
     
     //Find viewcontroller of current view ie custom table etc

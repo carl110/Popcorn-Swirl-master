@@ -38,11 +38,18 @@ class DetailedScreenViewController: UIViewController {
     override func viewDidLoad() {
         super .viewDidLoad()
         setUp()
-        loadIndividualFilmData()
         self.title = "Detailed View"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
+        
+        //when view appears remove overlay loading screen
+        self.view.removeBlakcOverLay()
+    }
+    
     func setUp() {
+        
         //randomly pick 1 - number of adverts from array
         advertPick = advertURL.pick(Int.random(in: 1 ..< advertURL.count))
         filmID = detailedScreenViewModel.filmID
@@ -50,10 +57,12 @@ class DetailedScreenViewController: UIViewController {
         searchURLButtonSetUp()
         //add blurview with loading spinner
         self.view.blackOverlay(loadingIconText: "Loading Film Data")
+        loadIndividualFilmData()
     }
     
     func searchURLButtonSetUp() {
         searchURLButton.setImage(UIImage(named: advertPick[0]), for: .normal)
+        
         //if there are 2 adverts then show
         if advertPick.count > 1 {
             searchButton2.setImage(UIImage(named: advertPick[1]), for: .normal)
@@ -85,6 +94,7 @@ class DetailedScreenViewController: UIViewController {
         filmYearOfRelease.text = String(filmMedia.yearOfRelease.prefix(10))
         filmGenre.text  = filmMedia.catagory
         filmPlot.text = filmMedia.plot
+        
         //if no plot from API place holder text
         if filmPlot.text == nil {
             print ("no data")
@@ -117,6 +127,7 @@ class DetailedScreenViewController: UIViewController {
     
     @IBAction func searchURLButton(_ sender: Any) {
         let search = "\(advertPick[0])"
+        
         //set URL redirect from array
         if search == "amazon" {
             amazonSearch(filmTitle: individualFilmModel!.title)
@@ -129,6 +140,7 @@ class DetailedScreenViewController: UIViewController {
     
     @IBAction func searchButton2(_ sender: Any) {
         let search = "\(advertPick[1])"
+        
         //set URL redirect from array
         if search == "amazon" {
             amazonSearch(filmTitle: individualFilmModel!.title)
