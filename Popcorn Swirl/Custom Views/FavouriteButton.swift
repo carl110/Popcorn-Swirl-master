@@ -13,8 +13,8 @@ import CoreData
 
 class FavouriteButton: UIButton {
     
-    let emptyHeart = UIImage(named: Images.emptyHeart.name())! as UIImage
-    let redHeart = UIImage(named: Images.redHeart.name())! as UIImage
+    let emptyHeart = Images.emptyHeart.image
+    let redHeart = Images.redHeart.image
     
     var isFavourite: Bool = false {
         didSet {

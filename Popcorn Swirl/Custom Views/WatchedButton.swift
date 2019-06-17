@@ -11,8 +11,8 @@ import UIKit
 
 class WatchedButton: UIButton {
     
-    let notWatched = UIImage(named: Images.notWatched.name())! as UIImage
-    let watched = UIImage(named: Images.watched.name())! as UIImage
+    let notWatched = Images.notWatched.image
+    let watched = Images.watched.image
     
     var isWatched: Bool = false {
         didSet {

@@ -26,8 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationBar = UINavigationBar.appearance()
         
+        //set colour
         navigationBar.barTintColor = UIColor.Yellows.mustardYellow
+        //remove any shading
         navigationBar.isTranslucent = false
+        //remove boarder lines
+        navigationBar.shadowImage = UIImage()
         
         return true
     }

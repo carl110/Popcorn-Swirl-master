@@ -35,8 +35,8 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     }
     
     func setUp() {
-        favouriteButton.setImage(UIImage(named: Images.redHeart.name()), for: .normal)
-        watchedButton.setImage(UIImage(named: Images.watched.name()), for: .normal)
+        favouriteButton.setImage(Images.redHeart.image, for: .normal)
+        watchedButton.setImage(Images.watched.image, for: .normal)
         self.title = myTitle
     }
     
@@ -94,14 +94,14 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         }
     }
     
-    func selectButton(button: UIButton, buttonImageSelectedSate: String, otherButton: UIButton, otherButtonSelectedSate: String, buttonCase: String, otherButtonCase: String, pictureURL: String, buttonTitle: String) {
+    func selectButton(button: UIButton, buttonImageSelectedSate: UIImage, otherButton: UIButton, otherButtonSelectedSate: UIImage, buttonCase: String, otherButtonCase: String, pictureURL: String, buttonTitle: String) {
         
         //Set Button image and title
-        button.setImage(UIImage(named: buttonImageSelectedSate), for: .normal)
+        button.setImage(buttonImageSelectedSate, for: .normal)
         button.setTitle("Exit \(buttonTitle) list", for: .normal)
         
         //if other button already selected
-        if(otherButton.currentImage?.isEqual(UIImage(named: otherButtonSelectedSate)))! {
+        if(otherButton.currentImage?.isEqual(otherButtonSelectedSate))! {
             
             //combine IDs from favourites and watched and show only those that are both
             let joinedArray = Array(Set(createIDArray(object: buttonCase)).intersection(createIDArray(object: otherButtonCase)))
@@ -128,12 +128,12 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         }
     }
     
-    func unSelectButton(button: UIButton, buttonImageCurrentState: String, otherButton: UIButton, otherButtonSelectedSate: String, otherButtonCase: String, buttonTitle: String,otherButtonTitle: String, pictureURL: String, buttonCase: String) {
-        button.setImage(UIImage(named: buttonImageCurrentState), for: .normal)
+    func unSelectButton(button: UIButton, buttonImageCurrentState: UIImage, otherButton: UIButton, otherButtonSelectedSate: UIImage, otherButtonCase: String, buttonTitle: String,otherButtonTitle: String, pictureURL: String, buttonCase: String) {
+        button.setImage(buttonImageCurrentState, for: .normal)
         button.setTitle(buttonTitle, for: .normal)
         
         //if other button selected
-        if(otherButton.currentImage?.isEqual(UIImage(named: otherButtonSelectedSate)))! {
+        if(otherButton.currentImage?.isEqual(otherButtonSelectedSate))! {
             print ("unselect and other butoon selected")
             //show all other button items
             filmArrayIsEmpty(object: otherButtonCase, idArray: createIDArray(object: otherButtonCase), pictureURL: pictureURL)
@@ -167,20 +167,20 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     @IBAction func favouriteButton(_ sender: Any) {
 
         
-        if (favouriteButton.currentImage?.isEqual(UIImage(named: Images.redHeart.name())))! {
+        if (favouriteButton.currentImage?.isEqual( Images.redHeart.image))! {
             selectButton(button: favouriteButton,
-                         buttonImageSelectedSate: Images.emptyHeart.name(),
+                         buttonImageSelectedSate: Images.emptyHeart.image,
                          otherButton: watchedButton,
-                         otherButtonSelectedSate: Images.notWatched.name(),
+                         otherButtonSelectedSate: Images.notWatched.image,
                          buttonCase: ButtonCase.favourite.name(),
                          otherButtonCase: ButtonCase.watched.name(),
                          pictureURL: favouritetURL,
                          buttonTitle: "Favourites")
         } else {
             unSelectButton(button: favouriteButton,
-                           buttonImageCurrentState: Images.redHeart.name(),
+                           buttonImageCurrentState: Images.redHeart.image,
                            otherButton: watchedButton,
-                           otherButtonSelectedSate: Images.notWatched.name(),
+                           otherButtonSelectedSate: Images.notWatched.image,
                            otherButtonCase: ButtonCase.watched.name(),
                            buttonTitle: "Favourites",
                            otherButtonTitle: "Watched",
@@ -191,20 +191,20 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     
     @IBAction func watchedButton(_ sender: Any) {
         
-        if (watchedButton.currentImage?.isEqual(UIImage(named: Images.watched.name())))! {
+        if (watchedButton.currentImage?.isEqual( Images.watched.image))! {
             selectButton(button: watchedButton,
-                         buttonImageSelectedSate: Images.notWatched.name(),
+                         buttonImageSelectedSate: Images.notWatched.image,
                          otherButton: favouriteButton,
-                         otherButtonSelectedSate: Images.emptyHeart.name(),
+                         otherButtonSelectedSate: Images.emptyHeart.image,
                          buttonCase: ButtonCase.watched.name(),
                          otherButtonCase: ButtonCase.favourite.name(),
                          pictureURL: watchedURL,
                          buttonTitle: "Watched")
         } else {
             unSelectButton(button: watchedButton,
-                           buttonImageCurrentState: Images.watched.name(),
+                           buttonImageCurrentState: Images.watched.image,
                            otherButton: favouriteButton,
-                           otherButtonSelectedSate: Images.emptyHeart.name(),
+                           otherButtonSelectedSate: Images.emptyHeart.image,
                            otherButtonCase: ButtonCase.favourite.name(),
                            buttonTitle: "Watched",
                            otherButtonTitle: "Favourites",

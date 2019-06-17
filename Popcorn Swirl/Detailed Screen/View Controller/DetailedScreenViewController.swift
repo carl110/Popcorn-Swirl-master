@@ -43,9 +43,11 @@ class DetailedScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            //when view appears remove overlay loading screen
+            self.view.removeBlakcOverLay()
+        }
         
-        //when view appears remove overlay loading screen
-        self.view.removeBlakcOverLay()
     }
     
     func setUp() {
@@ -97,21 +99,26 @@ class DetailedScreenViewController: UIViewController {
         
         //if no plot from API place holder text
         if filmPlot.text == nil {
-            print ("no data")
+            print ("No Plot held for this film...")
         }
         
         //Add comment if added for favourite films
         let watchedComment = CoreDataManager.shared.fetchIndividualID(filmID: Int32(filmID))
         for data in watchedComment! {
-            watchedFilmComments.text = data.watchedComment
             if data.favourite == true {
-                favouriteImage.image = UIImage(named: Images.redHeart.name())
+                favouriteImage.image = Images.redHeart.image
             }
+            //if film marked as watched and if therte are comments
             if data.watched == true {
-                watchedImage.image = UIImage(named: Images.watched.name())
+                watchedImage.image = Images.watched.image
+                if data.watchedComment.count > 0 {
+                    watchedFilmComments.text = "My comments for this film...\n\(data.watchedComment)\n"
+                } else {
+                    watchedFilmComments.text = "I have no comments on this film...\n"
+                }
             }
         }
-
+        
         //Get image from URL
         if let imageURL = URL(string: filmMedia.artworkURL) {
             GetRequests.getImage(imageUrl: imageURL, completion: { (success, imageData) in

@@ -22,8 +22,8 @@ class DataManager {
             let media = FilmModel(
                 id: 1458414924,
                 title: "Please wait",
-                catagory: "while",
-                yearOfRelease: "List Loads",
+                catagory: "whilst we load the",
+                yearOfRelease: "List",
                 artworkURL: "https://is4-ssl.mzstatic.com/image/thumb/Video3/v4/84/b3/18/84b31872-c3ab-fd22-e1a6-3873b1f32849/source/100x100bb.jpg")
             list.append(media)
         

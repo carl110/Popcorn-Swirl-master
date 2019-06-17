@@ -129,7 +129,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func favouriteButton(_ sender: Any) {
-        if (favouriteButton.currentImage?.isEqual(UIImage(named: Images.emptyHeart.name())))! {
+        if (favouriteButton.currentImage?.isEqual( Images.emptyHeart.image))! {
             
             //function for selecting button
             buttonSelected(object: ButtonCase.favourite.name(), filmID: id)
@@ -141,7 +141,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func watchedButton(_ sender: Any) {
-        if (watchedButton.currentImage?.isEqual(UIImage(named: Images.notWatched.name())))! {
+        if (watchedButton.currentImage?.isEqual(Images.notWatched.image))! {
             
             //function for selecting button
             buttonSelected(object: ButtonCase.watched.name(), filmID: id)
