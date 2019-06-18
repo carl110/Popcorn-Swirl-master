@@ -56,7 +56,8 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         GetRequests.getFilmList(term: movieSearch) { [weak self] (success, list) in
             if success, let list = list {
                 DataManager.shared.filmList = list
-     self?.reloadCollectionView()
+                self?.reloadCollectionView()
+
             } else { 
                 self?.alert(message: "Could not load data as not found")
             }
@@ -70,7 +71,7 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
             if success, let list = list {
                 DataManager.shared.filmList += list
                 self?.reloadCollectionView()
-                
+
             } else {
                 self?.alert(message: "Could not load data as not found")
             }

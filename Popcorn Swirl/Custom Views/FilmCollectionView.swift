@@ -42,7 +42,6 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         let filmModel = DataManager.shared.filmList[indexPath.item]
         let id = filmModel.id
         //send id to delegate for ViewController
-        print ("Cell selected has ID \(filmModel.id) and yor \(filmModel.yearOfRelease) \(filmModel.title)")
         cellDelegate?.cellWasSelected(id: id)
     }
     
@@ -74,7 +73,7 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     //When scroll gets to 10 before the end
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == DataManager.shared.filmList.count - 15 {
+        if indexPath.row == DataManager.shared.filmList.count - 25 {
             //pass number of years to remove to view controller
             cellDelegate?.nearingScrollEnd(year: yearCount)
             yearCount += 1

@@ -60,11 +60,15 @@ class MyCollectionViewCell: UICollectionViewCell {
         if let artWorkData = filmModel.artworkData,
             let artwork = UIImage(data: artWorkData) {
             self.setImage(image: artwork)
+            
         } else if let imageURL = URL(string: filmModel.artworkURL) {
             GetRequests.getImage(imageUrl: imageURL, completion: { [weak self] (sucess, imageData) in
                 if sucess, let imageData = imageData,
                     let artwork = UIImage(data: imageData) {
                     self?.setImage(image: artwork)
+                    
+                    //save poster into model to save redownloading
+                    filmModel.artworkData = try? Data(contentsOf: URL(string: filmModel.artworkURL)!)
                 }
             })
         }
