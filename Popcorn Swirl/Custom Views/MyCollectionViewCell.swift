@@ -34,13 +34,51 @@ class MyCollectionViewCell: UICollectionViewCell {
         yearOfRelease.text = String (filmModel.yearOfRelease.prefix(4))
         genre.text = filmModel.catagory
         id =  Int32(filmModel.id)
+        setButtonSate()
+        setImageForFilmPoster(filmModel: filmModel)
+    }
+    
+    func setButtonSate() {
+        
+        //Load list of films in coredata
+        let filmList = CoreDataManager.shared.fetchFilmIDs()
+        //if favourite or watched are true in core data update cell buttons
+        for film in filmList! {
+            if self.id == film.filmID {
+                if film.favourite == true {
+                    self.favouriteButton.isFavourite = true
+                }
+                if film.watched == true {
+                    self.watchedButton.isWatched = true
+                }
+            }
+        }
+    }
+    
+    func setImageForFilmPoster(filmModel: FilmModel) {
+        //if artwork already present use that otherwise load URL image
+        if let artWorkData = filmModel.artworkData,
+            let artwork = UIImage(data: artWorkData) {
+            self.setImage(image: artwork)
+        } else if let imageURL = URL(string: filmModel.artworkURL) {
+            GetRequests.getImage(imageUrl: imageURL, completion: { [weak self] (sucess, imageData) in
+                if sucess, let imageData = imageData,
+                    let artwork = UIImage(data: imageData) {
+                    self?.setImage(image: artwork)
+                }
+            })
+        }
     }
     
     func setImage(image: UIImage) {
-        artWorkImage.image = image
+        DispatchQueue.main.async { [weak self] in
+            self?.artWorkImage.image = image
+        }
+        
     }
     
     override func prepareForReuse() {
+        artWorkImage.image = Images.noFilmImage.image
         favouriteButton.isFavourite = false
         watchedButton.isWatched = false
         

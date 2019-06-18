@@ -33,36 +33,8 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
-        DispatchQueue.main.async {
-            //Load list of films in coredata
-            let filmList = CoreDataManager.shared.fetchFilmIDs()
-            //if favourite or watched are true in core data update cell buttons
-            for film in filmList! {
-                if cell.id == film.filmID {
-                    if film.favourite == true {
-                        cell.favouriteButton.isFavourite = true
-                    }
-                    if film.watched == true {
-                        cell.watchedButton.isWatched = true
-                    }
-                }
-            }
-        }
         let filmModel = DataManager.shared.filmList[indexPath.item]
         cell.populate(filmModel: filmModel)
-        if let artWorkData = filmModel.artworkData,
-            let artwork = UIImage(data: artWorkData) {
-            cell.setImage(image: artwork)
-        } else if let imageURL = URL(string: filmModel.artworkURL) {
-            GetRequests.getImage(imageUrl: imageURL, completion: { (sucess, imageData) in
-                if sucess, let imageData = imageData,
-                    let artwork = UIImage(data: imageData) {
-                    DispatchQueue.main.async {
-                        cell.setImage(image: artwork)
-                    }
-                }
-            })
-        }
         return cell
     }
     
@@ -102,7 +74,7 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     
     //When scroll gets to 10 before the end
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == DataManager.shared.filmList.count - 10 {
+        if indexPath.row == DataManager.shared.filmList.count - 15 {
             //pass number of years to remove to view controller
             cellDelegate?.nearingScrollEnd(year: yearCount)
             yearCount += 1

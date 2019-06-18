@@ -53,14 +53,12 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     func loadData(movieSearch: String) {
         
         //get list of films from term
-        GetRequests.getFilmList(term: movieSearch) { (success, list) in
+        GetRequests.getFilmList(term: movieSearch) { [weak self] (success, list) in
             if success, let list = list {
                 DataManager.shared.filmList = list
-                DispatchQueue.main.async { [weak self] in
-                    self?.filmCollectionView.reloadData()
-                }
+     self?.reloadCollectionView()
             } else { 
-                self.alert(message: "Could not load data as not found")
+                self?.alert(message: "Could not load data as not found")
             }
         }
     }
@@ -68,29 +66,32 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     //appends to existing array
     func addDataToArray(movieSearch: String) {
         //get list of films from term
-        GetRequests.getFilmList(term: movieSearch) { (success, list) in
+        GetRequests.getFilmList(term: movieSearch) { [weak self] (success, list) in
             if success, let list = list {
                 DataManager.shared.filmList += list
-                DispatchQueue.main.async { [weak self] in
-                    self?.filmCollectionView.reloadData()
-                }
+                self?.reloadCollectionView()
+                
             } else {
-                self.alert(message: "Could not load data as not found")
+                self?.alert(message: "Could not load data as not found")
             }
         }
     }
-
+    
     func loadDataFromID(filmID: [Int]) {
         //get list of films from specified ID Array
-        GetRequests.getFilmListFromID(filmIDArray: filmID) { (success, list) in
+        GetRequests.getFilmListFromID(filmIDArray: filmID) { [weak self] (success, list) in
             if success, let list = list {
                 DataManager.shared.filmList = list
-                DispatchQueue.main.async { [weak self] in
-                    self?.filmCollectionView.reloadData()
-                }
+                self?.reloadCollectionView()
             } else {
-                self.alert(message: "Could not load data as not found")
+                self?.alert(message: "Could not load data as not found")
             }
+        }
+    }
+    
+    func reloadCollectionView() {
+        DispatchQueue.main.async { [weak self] in
+            self?.filmCollectionView.reloadData()
         }
     }
     
@@ -166,7 +167,6 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
     
     @IBAction func favouriteButton(_ sender: Any) {
 
-        
         if (favouriteButton.currentImage?.isEqual( Images.redHeart.image))! {
             selectButton(button: favouriteButton,
                          buttonImageSelectedSate: Images.emptyHeart.image,

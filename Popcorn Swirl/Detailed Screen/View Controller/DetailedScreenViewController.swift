@@ -47,7 +47,6 @@ class DetailedScreenViewController: UIViewController {
             //when view appears remove overlay loading screen
             self.view.removeBlakcOverLay()
         }
-        
     }
     
     func setUp() {

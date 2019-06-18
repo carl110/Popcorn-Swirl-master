@@ -36,7 +36,7 @@ public enum Images: String {
         case .ebuzz: return UIImage(named: "ebuz")!
         case .emptyHeart: return UIImage(named: "emptyHeart")!
         case .hollywood: return UIImage(named: "hollywood")!
-        case .noFilmImage: return UIImage(named: "noFileImage")!
+        case .noFilmImage: return UIImage(named: "noFilmImage")!
         case .notWatched: return UIImage(named: "notWatched")!
         case .redHeart: return UIImage(named: "redHeart")!
         case .watched: return UIImage(named: "watched")!
