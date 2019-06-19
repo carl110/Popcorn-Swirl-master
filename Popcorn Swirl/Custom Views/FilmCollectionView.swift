@@ -18,13 +18,6 @@ protocol FilmCellSelectedDelegate {
 
 class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    
-
-    
-
-    
-    
-    private let VC = ViewController()
     //placeholder for number to remove from year for pagenation
     private var yearCount = 1
     var cellDelegate: FilmCellSelectedDelegate?
@@ -41,6 +34,10 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
         let filmModel = DataManager.shared.filmList[indexPath.item]
         cell.populate(filmModel: filmModel)
+        
+        
+        
+        
         return cell
     }
 
@@ -54,7 +51,6 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     override func awakeFromNib() {
         delegate = self
         dataSource = self
-//        prefetchDataSource = self
         registerCell()
     }
     
@@ -86,12 +82,4 @@ class FilmCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
             yearCount += 1
         }
     }
-//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-//        print("prefetching row of \(indexPaths)")
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-//         print("cancel prefetch row of \(indexPaths)")
-//    }
-
 }
