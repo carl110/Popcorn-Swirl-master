@@ -18,7 +18,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favouriteButton: FavouriteButton!
     @IBOutlet weak var watchedButton: WatchedButton!
     
-    var filmModel: FilmModel!
+//    var filmModel: FilmModel!
     var id: Int32?
     
     override func awakeFromNib() {
@@ -35,7 +35,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         genre.text = filmModel.catagory
         id =  Int32(filmModel.id)
         setButtonSate()
-        setImageForFilmPoster(filmModel: filmModel)
+        artWorkImage.loadFilmImage(filmModel: filmModel)
     }
     
     func setButtonSate() {
@@ -53,32 +53,6 @@ class MyCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
-    }
-    
-    func setImageForFilmPoster(filmModel: FilmModel) {
-        //if artwork already present use that otherwise load URL image
-        if let artWorkData = filmModel.artworkData,
-            let artwork = UIImage(data: artWorkData) {
-            self.setImage(image: artwork)
-            
-        } else if let imageURL = URL(string: filmModel.artworkURL) {
-            GetRequests.getImage(imageUrl: imageURL, completion: { [weak self] (sucess, imageData) in
-                if sucess, let imageData = imageData,
-                    let artwork = UIImage(data: imageData) {
-                    self?.setImage(image: artwork)
-                    
-                    //save poster into model to save redownloading
-                    filmModel.artworkData = try? Data(contentsOf: URL(string: filmModel.artworkURL)!)
-                }
-            })
-        }
-    }
-    
-    func setImage(image: UIImage) {
-        DispatchQueue.main.async { [weak self] in
-            self?.artWorkImage.image = image
-        }
-        
     }
     
     override func prepareForReuse() {
