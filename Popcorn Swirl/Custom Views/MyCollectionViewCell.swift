@@ -35,7 +35,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         genre.text = filmModel.catagory
         id =  Int32(filmModel.id)
         setButtonSate()
-        artWorkImage.loadFilmImage(filmModel: filmModel)
+        setImageForFilmPoster(filmModel: filmModel)
     }
     
     func setButtonSate() {
@@ -52,6 +52,30 @@ class MyCollectionViewCell: UICollectionViewCell {
                     self.watchedButton.isWatched = true
                 }
             }
+        }
+    }
+    
+    func setImageForFilmPoster(filmModel: FilmModel) {
+        //if artwork already present use that otherwise load URL image
+        if let artWorkData = filmModel.artworkData,
+            let artwork = UIImage(data: artWorkData) {
+            self.setImage(image: artwork)
+        } else if let imageURL = URL(string: filmModel.artworkURL) {
+            GetRequests.getImage(imageUrl: imageURL, completion: { [weak self] (sucess, imageData) in
+                if sucess, let imageData = imageData,
+                    let artwork = UIImage(data: imageData) {
+                    self?.setImage(image: artwork)
+                    
+                    //set image in model to save redownloading on next view
+                    filmModel.artworkData = try? Data(contentsOf: URL(string: filmModel.artworkURL)!)
+                }
+            })
+        }
+    }
+    
+    func setImage(image: UIImage) {
+        DispatchQueue.main.async { [weak self] in
+            self?.artWorkImage.image = image
         }
     }
     

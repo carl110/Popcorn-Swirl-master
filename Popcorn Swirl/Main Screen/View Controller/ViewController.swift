@@ -136,7 +136,6 @@ class ViewController: UIViewController, FilmCellSelectedDelegate {
         
         //if other button selected
         if(otherButton.currentImage?.isEqual(otherButtonSelectedSate))! {
-            print ("unselect and other butoon selected")
             //show all other button items
             filmArrayIsEmpty(object: otherButtonCase, idArray: createIDArray(object: otherButtonCase), pictureURL: pictureURL)
             

@@ -98,7 +98,7 @@ class DetailedScreenViewController: UIViewController {
         
         //if no plot from API place holder text
         if filmPlot.text == nil {
-            print ("No Plot held for this film...")
+            filmPlot.text = "No Plot held for this film..."
         }
         
         //Add comment if added for favourite films
