@@ -1,0 +1,16 @@
+This is project 9 on the OpenClassrooms iOS Developer course
+
+You go to a startup conference and meet Angie. She is working on her ‘smart-market’ idea to market various products to movie lovers. Angie has already secured an initial investment using a prototype she's quickly put together. She’s now looking for an iOS developer who can help her company implement a ‘beta’ version of the app that will have a nice appearance and will also demonstrate core functionality. She thinks that you may be a good fit for her team and wonders if you’d be interested in taking it on. You love movies (that’s for sure!) so why not?!
+App requirements
+
+The app will display lists of movies available to watch on Netflix for various categories, and show the 'Latest’ section by default. (Suggested API: Apple itunes, you are also welcome to use any other public API according to your preference)
+
+A user can bookmark a movie to form their personal selection, mark it as "watched", and add a note.
+
+A user can view the bookmarked list and the list of "watched" movies.
+
+While a user is viewing a movie category listing or details of a particular movie, they are presented with related products that may interest them*.
+
+If anything gets a user’s attention, they are redirected to the purchasing resource.
+
+*In context of this project you will also simulate an ad resource. Create a selection of ads of your choosing and randomly present one in the related app views.
